@@ -12,10 +12,10 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules("username", "User Name", "required");
         $this->form_validation->set_rules("password", "Pass Code", "required");
         $this->form_validation->set_error_delimiters("<div class='text-danger'>", "</div>");
-
+        $data['users'] = $this->users();
         $this->load->view('templates/header');
         $this->load->view("templates/nav");
-        $this->load->view('admin/index');
+        $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
     public function create_user()
@@ -30,27 +30,19 @@ class Admin extends CI_Controller
     }
     public function users()
     {
-        $users = $this->Admin_model->getusers()->result();
-        foreach ($users as $user) {
-            echo "<tr>
-                <td>$user->username</td>
-                <td>$user->mobile</td>
-                <td>$user->user_type</td>
-                <td> <a href='admin/edit/$user->id'>Edit</a>/<a href='admin/delete/$user->id'>Delete</a> </td>
-                <td>$user->status</td>
-                </tr>";
-        }
+        return $users = $this->Admin_model->getusers()->result();
     }
     public function delete($id)
     {
-        echo $this->Admin_model->delete_user($id);
+        $this->Admin_model->delete_user($id);
         return redirect("admin");
     }
     public function edit($id)
     {
         $this->load->view('templates/header');
         $this->load->view("templates/nav");
-        $this->load->view('admin/edit');
+        $data["user"] = $this->db->join("vendor_details", "id")->where("id", $id)->get("users")->row();
+        $this->load->view('admin/edit', $data);
         $this->load->view('templates/footer');
     }
     public function products()

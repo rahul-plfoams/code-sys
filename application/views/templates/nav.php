@@ -83,7 +83,7 @@
                 <?=img(["alt" => "Image placeholder", "src" => "../assets/img/admin_profile.png"])?>
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm  font-weight-bold"><?=$this->session->username?></span>
+                <span class="mb-0 text-sm  font-weight-bold"><?=$this->session->name?></span>
               </div>
             </div>
           </a>

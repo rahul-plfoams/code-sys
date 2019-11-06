@@ -40,22 +40,23 @@
             <div class="tab-content">
                 <!-- <form id="frm1" action="" method="POST"> -->
                 <div id="overview" class="container tab-pane active">
-                    <form action="updateuser.php" method="post" id="frm1">
+                <?=form_open("admin/update", ["id" => "frm1"])?>
+                    <!-- <form action="updateuser.php" method="post" id="frm1"> -->
                         <div class="form-group row">
                             <?=form_label("Company Name", "company_name", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "company_name", "name" => "company_name", "placeholder" => "Type Company Name here"])?>
+                            <?=form_input(["class" => "form-control col-sm-10", "id" => "company_name", "name" => "company_name", "placeholder" => "Type Company Name here", "value" => $user->company_name])?>
                         </div>
                         <div class="form-group row">
                             <?=form_label("Name", "name", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "name", "name" => "name", "placeholder" => "Type Name here"])?>
+                            <?=form_input(["class" => "form-control col-sm-10", "id" => "name", "name" => "name", "placeholder" => "Type Name here", "value" => $user->name])?>
                         </div>
                         <div class="form-group row">
                             <?=form_label("Mobile", "mobile", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "mobile", "name" => "mobile", "placeholder" => "Type Mobile No here"])?>
+                            <?=form_input(["class" => "form-control col-sm-10", "id" => "mobile", "name" => "mobile", "placeholder" => "Type Mobile No here", "value" => $user->mobile])?>
                         </div>
                         <div class="form-group row">
                             <?=form_label("Role", "role", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "role", "name" => "role", "placeholder" => "Type user role here"])?>
+                            <?=form_input(["class" => "form-control col-sm-10", "id" => "role", "name" => "role", "placeholder" => "Type user role here", "value" => $user->user_type])?>
                         </div>
                         <div class="btn-grp">
                             <?=form_button(["id" => "toggleEdit", "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
@@ -67,39 +68,39 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "billing_country", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_country", "id" => "billing_country", "placeholder" => "Type country here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "billing_country", "id" => "billing_country", "placeholder" => "Type country here..", "value" => $user->billing_country])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("State", "billing_state", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_state", "id" => "billing_state", "placeholder" => "Type state here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "billing_state", "id" => "billing_state", "placeholder" => "Type state here..", "value" => $user->billing_state])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("City", "billing_city", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_city", "id" => "billing_city", "placeholder" => "Type city here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "billing_city", "id" => "billing_city", "placeholder" => "Type city here..", "value" => $user->billing_city])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-8">
                             <?=form_label("Address", "billing_address", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_address", "id" => "billing_address", "placeholder" => "Type address here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "billing_address", "id" => "billing_address", "placeholder" => "Type address here..", "value" => $user->billing_address])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Pincode", "billing_pincode", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_pincode", "id" => "billing_pincode", "placeholder" => "Type pincode here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "billing_pincode", "id" => "billing_pincode", "placeholder" => "Type pincode here..", "value" => $user->billing_pincode])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4">
-                            <?=form_label("Credit Limit", "billing_credit_limit", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_credit_limit", "id" => "billing_credit_limit", "placeholder" => "Type credit limit here.."])?>
+                            <?=form_label("Credit Limit", "credit_limit", 'class="col-form-label"')?>
+                            <?=form_input(["class" => "form-control", "name" => "credit_limit", "id" => "credit_limit", "placeholder" => "Type credit limit here..", "value" => $user->credit_limit])?>
                         </div>
                         <div class="col-sm-4">
-                            <?=form_label("Credit days", "billing_credit_days", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_credit_days", "id" => "billing_credit_days", "placeholder" => "Type credit days here.."])?>
+                            <?=form_label("Credit days", "credit_days", 'class="col-form-label"')?>
+                            <?=form_input(["class" => "form-control", "name" => "credit_days", "id" => "credit_days", "placeholder" => "Type credit days here..", "value" => $user->credit_days])?>
                         </div>
                         <div class="col-sm-4">
-                            <?=form_label("Distance", "billing_kilometer", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "billing_kilometer", "id" => "billing_kilometer", "placeholder" => "Type kilometer here.."])?>
+                            <?=form_label("Distance", "billing_distance", 'class="col-form-label"')?>
+                            <?=form_input(["class" => "form-control", "name" => "billing_distance", "id" => "billing_distance", "placeholder" => "Type kilometer here..", "value" => $user->billing_distance])?>
                         </div>
                     </div>
                 </div>
@@ -107,39 +108,31 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "country", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "country", "id" => "country", "placeholder" => "Type country here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "shipping_country", "id" => "shipping_country", "placeholder" => "Type shipping_country here..", "value" => $user->shipping_country])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("State", "state", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "state", "id" => "state", "placeholder" => "Type state here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "shipping_state", "id" => "shipping_state", "placeholder" => "Type shipping_state here..", "value" => $user->shipping_state])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("City", "city", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "city", "id" => "city", "placeholder" => "Type city here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "shipping_city", "id" => "shipping_city", "placeholder" => "Type shipping_city here..", "value" => $user->shipping_city])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-8">
                             <?=form_label("Address", "address", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "address", "id" => "address", "placeholder" => "Type address here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "shipping_address", "id" => "shipping_address", "placeholder" => "Type shipping_address here..", "value" => $user->shipping_address])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Pincode", "pincode", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "pincode", "id" => "pincode", "placeholder" => "Type pincode here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "shipping_pincode", "id" => "shipping_pincode", "placeholder" => "Type shipping_pincode here..", "value" => $user->shipping_pincode])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4">
-                            <?=form_label("Credit Limit", "credit_limit", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "credit_limit", "id" => "credit_limit", "placeholder" => "Type credit limit here.."])?>
-                        </div>
-                        <div class="col-sm-4">
-                            <?=form_label("Credit days", "credit_days", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "credit_days", "id" => "credit_days", "placeholder" => "Type credit days here.."])?>
-                        </div>
-                        <div class="col-sm-4">
                             <?=form_label("Distance", "kilometer", 'class="col-form-label"')?>
-                            <?=form_input(["class" => "form-control", "name" => "kilometer", "id" => "kilometer", "placeholder" => "Type kilometer here.."])?>
+                            <?=form_input(["class" => "form-control", "name" => "shipping_distance", "id" => "shipping_distance", "placeholder" => "Type shipping_distance here..", "value" => $user->shipping_distance])?>
                         </div>
                     </div>
                 </div>
@@ -147,31 +140,31 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Mobile", "mobile", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "mobile", "name" => "mobile", "placeholder" => "Type mobile here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "mobile", "name" => "mobile", "placeholder" => "Type mobile here..", "value" => $user->mobile])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Email", "email", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "email", "name" => "email", "placeholder" => "Type email here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "email", "name" => "email", "placeholder" => "Type email here..", "value" => $user->email])?>
                         </div>
-                        <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                             <?=form_label("Phone", "phone", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "phone", "name" => "phone", "placeholder" => "Type phone here.."])?>
-                        </div>
+                            <?=form_input(["class" => "form-control", "id" => "phone", "name" => "phone", "placeholder" => "Type phone here..", "value" => $user->phone])?>
+                        </div> -->
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-8">
                             <?=form_label("Website", "website", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "website", "name" => "website", "placeholder" => "Type website here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "website", "name" => "website", "placeholder" => "Type website here..", "value" => $user->website])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Reference", "reference", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "reference", "name" => "reference", "placeholder" => "Type reference here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "reference", "name" => "reference", "placeholder" => "Type reference here..", "value" => $user->reference])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12">
                             <?=form_label("Owner", "owner", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type owner here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type owner here..", "value" => $user->owner])?>
                         </div>
                     </div>
                 </div>
@@ -179,45 +172,45 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("GST place", "gst_place", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "gst_place", "name" => "gst_place", "placeholder" => "Type gst_place here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "gst_place", "name" => "gst_place", "placeholder" => "Type gst_place here..", "value" => $user->gst_place])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("state code", "state_code", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "state_code", "name" => "state_code", "placeholder" => "Type state_code here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "state_code", "name" => "state_code", "placeholder" => "Type state_code here..", "value" => $user->state_code])?>
                         </div>
                         <div class="col-sm-4">
-                            <?=form_label("GST No", "owner", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type gst_no here.."])?>
+                            <?=form_label("GST No", "gst_no", "class='col-form-label'")?>
+                            <?=form_input(["class" => "form-control", "id" => "gst_no", "name" => "gst_no", "placeholder" => "Type gst_no here..", "value" => $user->gst_no])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <?=form_label("A/C Holder Name", "owner", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type owner here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type owner here..", "value" => $user->owner])?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("Permanent A/c no.", "account_no", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "account_no", "name" => "account_no", "placeholder" => "Type account_no here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "account_no", "name" => "account_no", "placeholder" => "Type account_no here..", "value" => $user->gst_no])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <?=form_label("Bank Name", "bank_name", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "bank_name", "name" => "bank_name", "placeholder" => "Type bank_name here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "bank_name", "name" => "bank_name", "placeholder" => "Type bank_name here..", "value" => $user->gst_no])?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("A/C Type", "account_type", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "account_type", "name" => "account_type", "placeholder" => "Type account_type here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "account_type", "name" => "account_type", "placeholder" => "Type account_type here..", "value" => $user->gst_no])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <?=form_label("Branch", "branch", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "branch", "name" => "branch", "placeholder" => "Type branch here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "branch", "name" => "branch", "placeholder" => "Type branch here..", "value" => $user->gst_no])?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("IFSC", "ifsc", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "ifsc", "name" => "ifsc", "placeholder" => "Type ifsc here.."])?>
+                            <?=form_input(["class" => "form-control", "id" => "ifsc", "name" => "ifsc", "placeholder" => "Type ifsc here..", "value" => $user->gst_no])?>
                         </div>
                     </div>
                 </div>
@@ -275,7 +268,7 @@
                     </div>
                     <!-- <form action="storePref.php?id=" method="post"> -->
                         <?=form_open("storePref.php?id=")?>
-                        <?php $table_header=["Sr. No", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "remark"]?>
+                        <?php $table_header = ["Sr. No", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "remark"]?>
                         <?=$this->table->set_heading($table_header)->generate()?>
                         <!-- <table class="table table-bordered text-center">
                             <thead>
@@ -293,7 +286,7 @@
                             <tbody id="showProduct">
                             </tbody>
                         </table> -->
-                        <?=form_submit(["value"=>"Save","class"=>"btn btn-primary"])?>
+                        <?=form_submit(["value" => "Save", "class" => "btn btn-primary"])?>
                         <?=form_close()?>
                         <!-- <table id="listProducts" class="table table-bordered text-center">
                             <thead>
@@ -352,3 +345,4 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=base_url("assets/js/edit.js")?>"></script>
