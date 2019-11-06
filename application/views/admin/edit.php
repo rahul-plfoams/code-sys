@@ -40,7 +40,7 @@
             <div class="tab-content">
                 <!-- <form id="frm1" action="" method="POST"> -->
                 <div id="overview" class="container tab-pane active">
-                <?=form_open("admin/update", ["id" => "frm1"])?>
+                <!-- <?=form_open("admin/update", ["id" => "frm1"])?> -->
                     <!-- <form action="updateuser.php" method="post" id="frm1"> -->
                         <div class="form-group row">
                             <?=form_label("Company Name", "company_name", "class='col-sm-2 col-form-label'")?>
@@ -62,7 +62,7 @@
                             <?=form_button(["id" => "toggleEdit", "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
                             <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
                 <div id="billing" class="container tab-pane fade">
                     <div class="form-group row">

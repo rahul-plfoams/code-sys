@@ -98,7 +98,7 @@ function getProduct(id) {
     xmlhttp.send();
 }
 
-$("#frm1 input:text").prop("readonly", true);
+$("#overview input:text").prop("readonly", true);
 $("input.searching").attr("readonly", false);
 (function($) {
     $.fn.toggleReadonly = function() {
@@ -111,7 +111,7 @@ $("input.searching").attr("readonly", false);
 })(jQuery);
 $(function() {
     $("#toggleEdit").click(function() {
-        $("#frm1 input:text").toggleReadonly();
+        $("#overview input:text").toggleReadonly();
         $("[type='submit']").removeAttr("disabled");
     });
 });
@@ -131,18 +131,15 @@ $(".showSingle").click(function() {
     }
 });
 
-// $(document).ready(() => {
-//     setTimeout(() => {
-//         $(".msg").style.display = "none";
-//     }, 3000);
-// });
-
-// var header = document.getElementById("myDIV");
-// var btns = header.getElementsByClassName("btnArrow");
-// for (var i = 0; i < btns.length; i++) {
-//     btns[i].addEventListener("click", function() {
-//         var current = document.getElementsByClassName("active");
-//         current[0].className = current[0].className.replace(" active", "");
-//         this.className += " active";
-//     });
-// }
+$("[name='update']").click(() => {
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         console.log(this.responseText);
+    //     }
+    // };
+    // xhttp.open("POST", "https://code-sys/admin/test", true);
+    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhttp.send("test=tableData");
+    $.post("https://code-sys/admin/test", { test: "test myself" }, (res) => { console.log(res) });
+});

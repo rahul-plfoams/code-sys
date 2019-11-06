@@ -21,4 +21,4 @@
 	<!-- <script type="text/javascript" src="<?=base_url("assets/js/dataTables.bootstrap4.js")?>"></script> -->
 </head>
 
-<body>
+<body class="bg-default">

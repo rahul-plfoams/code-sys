@@ -5,7 +5,7 @@ class Admin_model extends CI_Model
     {
         return $this->db->join("vendor_details", "id")
             ->get("users");
-           
+
     }
     public function new_user($name, $mobile, $user_type, $email, $password)
     {
@@ -18,6 +18,11 @@ class Admin_model extends CI_Model
     {
         $this->db->delete("users", ["id" => $id]);
         $this->db->delete("vendor_details", ["id" => $id]);
+    }
+    public function update_user($data)
+    {
+        echo "<pre>";
+        print_r($data);
     }
     public function list_products()
     {

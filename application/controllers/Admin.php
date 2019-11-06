@@ -45,6 +45,10 @@ class Admin extends CI_Controller
         $this->load->view('admin/edit', $data);
         $this->load->view('templates/footer');
     }
+    public function update($data)
+    {
+        $this->Admin_model->update_user($data);
+    }
     public function products()
     {
         $products = $this->Admin_model->list_products()->result();
@@ -56,5 +60,10 @@ class Admin extends CI_Controller
     public function orders()
     {
         return redirect("orders");
+    }
+    public function test()
+    {
+        // echo "this is test function for ajax";
+        echo $this->input->post("test");
     }
 }
