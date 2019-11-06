@@ -10,7 +10,7 @@ $input_classes = "form-control form-control-alternative";
         <div class="card-header bg-transparent">
           <div class="row align-items-center">
             <div class="col">
-              <h2 class="text-uppercase text-light ls-1 mb-1">Create Account</h6>
+              <h2 class="text-uppercase text-light ls-1 mb-1">Create Account</h2>
             </div>
           </div>
         </div>
