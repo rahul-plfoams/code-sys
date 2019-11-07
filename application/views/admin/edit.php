@@ -38,33 +38,35 @@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <!-- <form id="frm1" action="" method="POST"> -->
                 <div id="overview" class="container tab-pane active">
-                <!-- <?=form_open("admin/update", ["id" => "frm1"])?> -->
-                    <!-- <form action="updateuser.php" method="post" id="frm1"> -->
-                        <div class="form-group row">
-                            <?=form_label("Company Name", "company_name", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "company_name", "name" => "company_name", "placeholder" => "Type Company Name here", "value" => $user->company_name])?>
-                        </div>
-                        <div class="form-group row">
-                            <?=form_label("Name", "name", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "name", "name" => "name", "placeholder" => "Type Name here", "value" => $user->name])?>
-                        </div>
-                        <div class="form-group row">
-                            <?=form_label("Mobile", "mobile", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "mobile", "name" => "mobile", "placeholder" => "Type Mobile No here", "value" => $user->mobile])?>
-                        </div>
-                        <div class="form-group row">
-                            <?=form_label("Role", "role", "class='col-sm-2 col-form-label'")?>
-                            <?=form_input(["class" => "form-control col-sm-10", "id" => "role", "name" => "role", "placeholder" => "Type user role here", "value" => $user->user_type])?>
-                        </div>
-                        <div class="btn-grp">
-                            <?=form_button(["id" => "toggleEdit", "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
-                            <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
-                        </div>
-                    <!-- </form> -->
+                    <?=form_open("admin/overview", ["id" => "form_overview"])?>
+
+                    <div class="form-group row">
+                        <?=form_label("Company Name", "company_name", "class='col-sm-2 col-form-label'")?>
+                        <?=form_input(["class" => "form-control col-sm-10", "id" => "company_name", "name" => "company_name", "placeholder" => "Type Company Name here", "value" => $user->company_name])?>
+                    </div>
+                    <div class="form-group row">
+                        <?=form_label("Name", "name", "class='col-sm-2 col-form-label'")?>
+                        <?=form_input(["class" => "form-control col-sm-10", "id" => "name", "name" => "name", "placeholder" => "Type Name here", "value" => $user->name]);?>
+                        <?=form_hidden(["id" => "$user->id"]);?>
+                    </div>
+                    <div class="form-group row">
+                        <?=form_label("Mobile", "mobile", "class='col-sm-2 col-form-label'")?>
+                        <?=form_input(["class" => "form-control col-sm-10", "id" => "mobile", "name" => "mobile", "placeholder" => "Type Mobile No here", "value" => $user->mobile])?>
+                    </div>
+                    <div class="form-group row">
+                        <?=form_label("Role", "role", "class='col-sm-2 col-form-label'")?>
+                        <?=form_input(["class" => "form-control col-sm-10", "id" => "role", "name" => "role", "placeholder" => "Type user role here", "value" => $user->user_type])?>
+                    </div>
+
+                    <div class="btn-grp">
+                        <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
+                    </div>
+                    <?=form_close()?>
                 </div>
                 <div id="billing" class="container tab-pane fade">
+                    <?=form_open("admin/billing", ["id" => "form_billing"])?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "billing_country", 'class="col-form-label"')?>
@@ -103,8 +105,14 @@
                             <?=form_input(["class" => "form-control", "name" => "billing_distance", "id" => "billing_distance", "placeholder" => "Type kilometer here..", "value" => $user->billing_distance])?>
                         </div>
                     </div>
+                    <div class="btn-grp">
+                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
+                    </div>
+                    <?=form_close()?>
                 </div>
                 <div id="shipping" class="container tab-pane fade">
+                    <?=form_open("admin/shipping", ["id" => "form_shipping"])?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "country", 'class="col-form-label"')?>
@@ -135,8 +143,14 @@
                             <?=form_input(["class" => "form-control", "name" => "shipping_distance", "id" => "shipping_distance", "placeholder" => "Type shipping_distance here..", "value" => $user->shipping_distance])?>
                         </div>
                     </div>
+                    <div class="btn-grp">
+                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
+                    </div>
+                    <?=form_close()?>
                 </div>
                 <div id="contact" class="container tab-pane fade">
+                    <?=form_open("admin/contact", ["id" => "form_contact"])?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Mobile", "mobile", "class='col-form-label'")?>
@@ -167,8 +181,14 @@
                             <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type owner here..", "value" => $user->owner])?>
                         </div>
                     </div>
+                    <div class="btn-grp">
+                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
+                    </div>
+                    <?=form_close()?>
                 </div>
                 <div id="gst" class="container tab-pane fade">
+                    <?=form_open("admin/gst", ["id" => "form_gst"])?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("GST place", "gst_place", "class='col-form-label'")?>
@@ -213,11 +233,14 @@
                             <?=form_input(["class" => "form-control", "id" => "ifsc", "name" => "ifsc", "placeholder" => "Type ifsc here..", "value" => $user->gst_no])?>
                         </div>
                     </div>
+                    <div class="btn-grp">
+                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
+                    </div>
+                    <?=form_close()?>
                 </div>
-                <!-- </form> -->
                 <div id="ledger" class="container tab-pane fade">
                     <div id="importFrm">
-
                         <?=form_open("importdata.php?id=")?>
                         <?=$this->table->add_row(form_upload(["class" => "chooseFileInput", "name" => "file"]), form_submit(["class" => "btn btn-primary", "name" => "importSubmit", "value" => "IMPORT"]))->generate();?>
                         <?=form_close()?>
@@ -267,10 +290,10 @@
                         </form>
                     </div>
                     <!-- <form action="storePref.php?id=" method="post"> -->
-                        <?=form_open("storePref.php?id=")?>
-                        <?php $table_header = ["Sr. No", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "remark"]?>
-                        <?=$this->table->set_heading($table_header)->generate()?>
-                        <!-- <table class="table table-bordered text-center">
+                    <?=form_open("storePref.php?id=")?>
+                    <?php $table_header = ["Sr. No", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "remark"]?>
+                    <?=$this->table->set_heading($table_header)->generate()?>
+                    <!-- <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
                                     <td class="align-middle">Sr. No</td>
@@ -286,9 +309,9 @@
                             <tbody id="showProduct">
                             </tbody>
                         </table> -->
-                        <?=form_submit(["value" => "Save", "class" => "btn btn-primary"])?>
-                        <?=form_close()?>
-                        <!-- <table id="listProducts" class="table table-bordered text-center">
+                    <?=form_submit(["value" => "Save", "class" => "btn btn-primary"])?>
+                    <?=form_close()?>
+                    <!-- <table id="listProducts" class="table table-bordered text-center">
                             <thead>
                                 <tr>
                                     <td class="align-middle">Sr. No</td>
@@ -320,28 +343,9 @@
                                 </tr>
                             </tbody>
                         </table> -->
-                        <?=$this->table->set_heading($table_header)->generate()?>
+                    <?=$this->table->set_heading($table_header)->generate()?>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2 id="editProductName">demo</h2>
-        </div>
-        <div class="modal-body">
-            <form action="" method="post" onsubmit="editVendorProduct(this); return false;">
-                <label for="editProductRate">Rate</label>
-                <input type="number" name="" id="editProductRate">
-                <label for="editProductRemark">Remark</label>
-                <input type="Text" name="" id="editProductRemark">
-                <input type="submit" value="save" onclick="">
-            </form>
         </div>
     </div>
 </div>

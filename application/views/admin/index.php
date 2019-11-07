@@ -84,12 +84,13 @@ $input_classes = "form-control form-control-alternative";
                 </thead>
                 <tbody>
 <?php foreach ($users as $user) {
+    $status = $user->status == 1 ? 'enabled' : 'disabled';
     echo "<tr>
           <td>$user->name</td>
           <td>$user->mobile</td>
           <td>$user->user_type</td>
           <td> <a href='admin/edit/$user->id'>Edit</a>/<a href='admin/delete/$user->id'>Delete</a> </td>
-          <td>$user->status</td>
+          <td>$status</td>
           </tr>";
 }
 ?>

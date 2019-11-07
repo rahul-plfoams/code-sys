@@ -9,20 +9,19 @@ class Admin_model extends CI_Model
     }
     public function new_user($name, $mobile, $user_type, $email, $password)
     {
-        $logindata = ["name" => $name, "username" => $mobile, "user_type" => $user_type, "email" => $email, "password" => $password];
-        $vendor_details = ["mobile" => $mobile];
+        $logindata = ["name" => $name, "mobile" => $mobile, "user_type" => $user_type, "email" => $email, "password" => $password];
         $this->db->insert("users", $logindata);
-        $this->db->insert("vendor_details", $vendor_details);
+        $this->db->insert("vendor_details", ["status" => 1]);
     }
     public function delete_user($id)
     {
-        $this->db->delete("users", ["id" => $id]);
-        $this->db->delete("vendor_details", ["id" => $id]);
+        $data = ["id" => $id];
+        $this->db->delete("users", $data);
+        $this->db->delete("vendor_details", $data);
     }
     public function update_user($data)
     {
-        echo "<pre>";
-        print_r($data);
+        $query = $this->db->where("name", $data["name"])->update("users", $data);
     }
     public function list_products()
     {

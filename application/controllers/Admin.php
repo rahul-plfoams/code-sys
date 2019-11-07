@@ -61,9 +61,31 @@ class Admin extends CI_Controller
     {
         return redirect("orders");
     }
-    public function test()
+    public function overview()
     {
-        // echo "this is test function for ajax";
-        echo $this->input->post("test");
+        $company_name = $this->input->post("company_name");
+        $name = $this->input->post("name");
+        $mobile = $this->input->post("mobile");
+        $user_type = $this->input->post("role");
+        $id = $this->input->post("id");
+        $data = ["id" => $id, "company_name" => $company_name, "name" => $name, "mobile" => $mobile, "user_type" => $user_type];
+        $this->update($data);
+        return redirect("admin/edit/$id");
+    }
+    public function billing()
+    {
+
+    }
+    public function shipping()
+    {
+
+    }
+    public function contact()
+    {
+
+    }
+    public function gst()
+    {
+
     }
 }
