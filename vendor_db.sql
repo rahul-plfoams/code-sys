@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2019 at 05:39 PM
+-- Generation Time: Nov 07, 2019 at 06:33 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -59,9 +59,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `vendor_id`, `order_details`, `order_generated`, `order_status`) VALUES
-(1, 2, 'a:2:{i:0;a:7:{s:11:\"vendor_code\";s:8:\"new code\";s:10:\"product_id\";s:1:\"4\";s:6:\"length\";s:4:\"4455\";s:5:\"width\";s:3:\"425\";s:9:\"thickness\";s:2:\"25\";s:8:\"quantity\";s:2:\"42\";s:6:\"remark\";s:5:\"rahul\";}i:1;a:7:{s:11:\"vendor_code\";s:6:\"mat123\";s:10:\"product_id\";s:1:\"3\";s:6:\"length\";s:2:\"34\";s:5:\"width\";s:2:\"21\";s:9:\"thickness\";s:2:\"43\";s:8:\"quantity\";s:1:\"5\";s:6:\"remark\";s:5:\"rohit\";}}', '2019-10-23 10:02:08', 'pending confirmation'),
+(1, 3, 'a:2:{i:0;a:7:{s:11:\"vendor_code\";s:8:\"new code\";s:10:\"product_id\";s:1:\"4\";s:6:\"length\";s:4:\"4455\";s:5:\"width\";s:3:\"425\";s:9:\"thickness\";s:2:\"25\";s:8:\"quantity\";s:2:\"42\";s:6:\"remark\";s:5:\"rahul\";}i:1;a:7:{s:11:\"vendor_code\";s:6:\"mat123\";s:10:\"product_id\";s:1:\"3\";s:6:\"length\";s:2:\"34\";s:5:\"width\";s:2:\"21\";s:9:\"thickness\";s:2:\"43\";s:8:\"quantity\";s:1:\"5\";s:6:\"remark\";s:5:\"rohit\";}}', '2019-10-23 10:02:08', 'pending confirmation'),
 (2, 2, 'a:1:{i:0;a:7:{s:11:\"vendor_code\";s:7:\"asfasdf\";s:10:\"product_id\";s:1:\"3\";s:6:\"length\";s:2:\"34\";s:5:\"width\";s:2:\"12\";s:9:\"thickness\";s:2:\"34\";s:8:\"quantity\";s:3:\"145\";s:6:\"remark\";s:11:\"test remark\";}}', '2019-10-30 14:46:13', 'pending confirmation'),
-(3, 2, 'a:1:{i:0;a:7:{s:11:\"vendor_code\";s:5:\"rahul\";s:10:\"product_id\";s:1:\"7\";s:6:\"length\";s:2:\"31\";s:5:\"width\";s:3:\"123\";s:9:\"thickness\";s:1:\"2\";s:8:\"quantity\";s:2:\"23\";s:6:\"remark\";s:15:\"somrrefdfsdlihg\";}}', '2019-11-01 12:29:55', 'pending confirmation'),
+(3, 3, 'a:1:{i:0;a:7:{s:11:\"vendor_code\";s:5:\"rahul\";s:10:\"product_id\";s:1:\"7\";s:6:\"length\";s:2:\"31\";s:5:\"width\";s:3:\"123\";s:9:\"thickness\";s:1:\"2\";s:8:\"quantity\";s:2:\"23\";s:6:\"remark\";s:15:\"somrrefdfsdlihg\";}}', '2019-11-01 12:29:55', 'pending confirmation'),
 (4, 2, 'a:1:{i:0;a:7:{s:11:\"vendor_code\";s:0:\"\";s:10:\"product_id\";s:2:\"10\";s:6:\"length\";s:0:\"\";s:5:\"width\";s:0:\"\";s:9:\"thickness\";s:0:\"\";s:8:\"quantity\";s:0:\"\";s:6:\"remark\";s:0:\"\";}}', '2019-11-01 12:42:12', 'pending confirmation');
 
 -- --------------------------------------------------------
@@ -110,7 +110,8 @@ CREATE TABLE `users` (
   `user_type` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `user_added` datetime NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `user_added` datetime NOT NULL DEFAULT current_timestamp(),
   `user_modified` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -118,9 +119,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `mobile`, `email`, `user_type`, `password`, `name`, `user_added`, `user_modified`) VALUES
-(1, 1, 'admin@plfoams.in', 'admin', '1', 'admin', '0000-00-00 00:00:00', NULL),
-(3, 8657501222, 'corporate@plfoams.in', 'staff', '1234', 'rahul singh gurjar', '0000-00-00 00:00:00', NULL);
+INSERT INTO `users` (`id`, `mobile`, `email`, `user_type`, `password`, `name`, `company_name`, `user_added`, `user_modified`) VALUES
+(1, 1, 'admin@plfoams.in', 'admin', '1', 'admin', '', '0000-00-00 00:00:00', NULL),
+(3, 8286676719, 'corporate@plfoams.in', 'staff', '1234', 'rahul singh gurjar', 'premratan comcast pvt ltd', '0000-00-00 00:00:00', NULL),
+(6, 9022716549, 'test@test.com', 'vendor', '1234', 'rahul', 'premratan concast pvt ltd', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,6 @@ INSERT INTO `users` (`id`, `mobile`, `email`, `user_type`, `password`, `name`, `
 
 CREATE TABLE `vendor_details` (
   `id` int(10) UNSIGNED NOT NULL,
-  `company_name` varchar(200) DEFAULT NULL,
   `shipping_address` text DEFAULT NULL,
   `shipping_city` varchar(60) DEFAULT NULL,
   `shipping_pincode` int(11) DEFAULT NULL,
@@ -163,8 +164,9 @@ CREATE TABLE `vendor_details` (
 -- Dumping data for table `vendor_details`
 --
 
-INSERT INTO `vendor_details` (`id`, `company_name`, `shipping_address`, `shipping_city`, `shipping_pincode`, `shipping_state`, `shipping_country`, `credit_days`, `credit_limit`, `shipping_distance`, `billing_address`, `billing_city`, `billing_pincode`, `billing_state`, `billing_country`, `billing_distance`, `website`, `reference`, `owner`, `gst_place`, `state_code`, `gst_no`, `account_no`, `bank_name`, `account_type`, `ifsc`, `branch`, `status`) VALUES
-(3, 'premratan', 'goregaon', 'mumbai', 400065, 'maharashtra', 'india', 30, 100000, 10, 'goregaon', 'mumbai', '400065', 'maharashtra', 'india', '10', NULL, NULL, NULL, 'maharshatra', 'mh', 'somerandom', 1231412414, 'union', 'current', 'UBIN00000000', 'goregaon', 1);
+INSERT INTO `vendor_details` (`id`, `shipping_address`, `shipping_city`, `shipping_pincode`, `shipping_state`, `shipping_country`, `credit_days`, `credit_limit`, `shipping_distance`, `billing_address`, `billing_city`, `billing_pincode`, `billing_state`, `billing_country`, `billing_distance`, `website`, `reference`, `owner`, `gst_place`, `state_code`, `gst_no`, `account_no`, `bank_name`, `account_type`, `ifsc`, `branch`, `status`) VALUES
+(3, 'goregaon', 'mumbai', 400065, 'maharashtra', 'india', 30, 100000, 10, 'goregaon', 'mumbai', '400065', 'maharashtra', 'india', '10', NULL, NULL, NULL, 'maharshatra', 'mh', 'somerandom', 1231412414, 'union', 'current', 'UBIN00000000', 'goregaon', 1),
+(6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -187,13 +189,13 @@ CREATE TABLE `vendor_pref` (
 --
 
 INSERT INTO `vendor_pref` (`p_in`, `vendor_id`, `product_id`, `product_rate`, `product_remark`, `added_date`, `modified_date`) VALUES
-(11, 2, 5, '100', '1+4', '2019-10-30 16:22:38', NULL),
-(12, 2, 6, '106', '1+5', '2019-10-30 16:22:38', NULL),
-(13, 2, 7, '146', '1+1+4', '2019-10-30 16:22:38', NULL),
-(14, 2, 8, '495', 'packing', '2019-10-30 16:22:38', NULL),
-(15, 2, 10, '165', 'with Stamp', '2019-10-30 16:22:38', NULL),
-(16, 2, 11, '7', 'Plain Packing', '2019-10-30 16:22:38', NULL),
-(17, 2, 12, '238', 'Dark Colours', '2019-10-30 16:22:38', NULL);
+(11, 3, 5, '100', '1+4', '2019-10-30 16:22:38', NULL),
+(12, 3, 6, '106', '1+5', '2019-10-30 16:22:38', NULL),
+(13, 3, 7, '146', '1+1+4', '2019-10-30 16:22:38', NULL),
+(14, 3, 8, '495', 'packing', '2019-10-30 16:22:38', NULL),
+(15, 3, 10, '165', 'with Stamp', '2019-10-30 16:22:38', NULL),
+(16, 3, 11, '7', 'Plain Packing', '2019-10-30 16:22:38', NULL),
+(17, 3, 12, '238', 'Dark Colours', '2019-10-30 16:22:38', NULL);
 
 --
 -- Indexes for dumped tables
@@ -256,13 +258,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `vendor_details`
 --
 ALTER TABLE `vendor_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `vendor_pref`
