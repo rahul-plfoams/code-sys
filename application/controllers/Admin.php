@@ -51,11 +51,12 @@ class Admin extends CI_Controller
     }
     public function products()
     {
-        $products = $this->Admin_model->list_products()->result();
-        foreach ($products as $product) {
-            echo "<pre>";
-            print_r($product->product_name);
-        }
+        
+        $this->load->view('templates/header');
+        $this->load->view("templates/nav");
+        $data["products"] = $this->Admin_model->list_products();
+        $this->load->view('admin/products', $data);
+        $this->load->view('templates/footer');
     }
     public function orders()
     {
