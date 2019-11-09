@@ -7,16 +7,14 @@
 	<title>Vendor System</title>
 	<?=link_tag("assets/css/argon-dashboard.css?v=1.1.0")?>
 	<?=link_tag("assets/js/plugins/nucleo/css/nucleo.css")?>
-	<?=link_tag("assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css")?>
-	<?=link_tag("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css")?>
-	<?=link_tag("https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css")?>
+	<?=link_tag("assets/DataTables/datatables.min.css")?>
+	<?=link_tag("assets/fontawesome-free-5.11.2-web/css/all.min.css")?>
 	<!-- Favicon -->
 	<?=link_tag("assets/images/brand/favicon.png", "icon", "image/png")?>
 
-	<script type="text/javascript" src="<?=base_url("assets/js/jquery-3.2.1.js")?>"></script>
-	<script type="text/javascript" src="<?=base_url("assets/js/bootstrap.js")?>"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?=base_url("assets/js/jquery-3.4.1.min.js")?>"></script>
+	<script type="text/javascript" src="<?=base_url("assets/DataTables/datatables.min.js")?>"></script>
+	<script type="text/javascript" src="<?=base_url("assets/DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js")?>"></script>
 </head>
 
 <body class="bg-default">

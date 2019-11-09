@@ -51,12 +51,16 @@ class Admin extends CI_Controller
     }
     public function products()
     {
-        
+
         $this->load->view('templates/header');
         $this->load->view("templates/nav");
         $data["products"] = $this->Admin_model->list_products();
         $this->load->view('admin/products', $data);
         $this->load->view('templates/footer');
+    }
+    public function add_product()
+    {
+
     }
     public function orders()
     {

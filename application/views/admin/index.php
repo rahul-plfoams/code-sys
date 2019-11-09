@@ -104,3 +104,11 @@ $input_classes = "form-control form-control-alternative";
   </div>
 </div>
 </div>
+<script>
+$(document).ready(()=>{
+    $('table').DataTable({
+        dom: 'Bfrtip',
+        buttons: [ 'pdf', 'print' ]
+    });
+});
+</script>

@@ -1,6 +1,7 @@
 <?php
 class Admin_model extends CI_Model
 {
+    //users
     public function getusers()
     {
         return $this->db->join("vendor_details", "id")
@@ -22,6 +23,12 @@ class Admin_model extends CI_Model
     public function update_user($data)
     {
         $query = $this->db->where("name", $data["name"])->update("users", $data);
+    }
+
+    //products
+    public function insert_product($data)
+    {
+        $this->db->insert("products", $data);
     }
     public function list_products()
     {

@@ -46,7 +46,7 @@
             <?=form_close()?>
             <?php
 $this->table->set_heading("ID", "Name", "Grade", "Quality", "Unit", "Sale", "GST", "Remark", "Actions");
-$template = ['table_open' => '<table class="table table-bordered">'];
+$template = ['table_open' => '<table id="myTbl" class="table table-bordered">'];
 $this->table->set_template($template);
 foreach ($products->result() as $product) {
     $this->table->add_row(
@@ -60,31 +60,33 @@ foreach ($products->result() as $product) {
         $product->remark,
         "<i class='text-info fas fa-edit'></i>" . nbs(2) . "<i class='text-danger fas fa-trash-alt'></i>"
     );}?>
-            <?php $this->table->generate()?>
+            <?=$this->table->generate()?>
         </div>
     </div>
 
 </div>
-<div class="container-fluid bg-dark">
-        <table id="dataTable" class="table table-bordered" style="width:100%">
-        <thead>
-        <th>product_id</th>
-        <th>product_name</th>
-        <th>grade</th>
-        <th>quality</th>
-        </thead>
-        </table>
-    </div>
 <script>
-$(document).ready(function() {
-    $('#dataTable').DataTable( {
-        data:<?=json_encode($products->result())?>,
-        "columns": [
-		          { "data": "product_id" },
-		          { "data": "product_name" },
-		          { "data": "grade" },
-		          { "data": "quality" },
-		       ]
-    } );
-} );
+    $(document).ready(() => {
+        $('#myTbl').DataTable({
+            dom: 'Bfrtip',
+            buttons: ['pdf', {
+                extend: 'print',
+                exportOptions: {
+                    columns: [1, 2, 3],
+                },
+                customize: function (win) {
+                    $(win.document.body)
+                        // .css('font-size', '10pt')
+                        .prepend(
+                            '<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
+                        );
+
+                    // $(win.document.body).find('table')
+                    //     .addClass('compact')
+                    //     .css('font-size', 'inherit');
+
+                }
+            }]
+        });
+    });
 </script>
