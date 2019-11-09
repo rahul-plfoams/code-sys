@@ -16,9 +16,13 @@ class Main extends CI_Controller
             if ($userData) {
                 switch ($userData->user_type) {
                     case "admin":
-                        $this->session->set_userdata(["id" => $userData->id, "username" => $userData->username, "password" => $userData->password, "name" => $userData->name]);
-                        $this->session->userdata("username");
+                        foreach ($userData as $key => $value) {
+                            $this->session->set_userdata($key, $value);
+                        }
+                        echo "<pre>";
+                        print_r($this->session);
                         return redirect("admin");
+
                         break;
                     case "staff":
                         return redirect("staff");

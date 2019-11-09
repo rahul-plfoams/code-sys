@@ -1,3 +1,4 @@
+<?php if ($this->session->user_type === "admin") {?>
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
   <div class="container-fluid">
     <!-- Toggler -->
@@ -20,11 +21,11 @@
           </div>
         </a>
         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-          <a href="./examples/profile.html" class="dropdown-item">
+          <!-- <a href="./examples/profile.html" class="dropdown-item">
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
-          </a>
-          <a href="./home.php?logout='1'" class="dropdown-item">
+          </a> -->
+          <a href="<?=$this->session->user_type?>/logout" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>
@@ -64,9 +65,16 @@
             <i class="ni ni-box-2 text-primary"></i>Orders
           </a>
         </li>
+        <li class="nav-item text-center">
+        <a href="<?=$this->session->user_type?>/logout" class="dropdown-item bg-danger">
+            <i class="ni ni-user-run"></i>
+            <span>Logout</span>
+          </a>
+        </li>
       </ul>
     </div>
 </nav>
+<?php }?>
 <div class="main-content">
   <!-- Navbar -->
   <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
@@ -91,14 +99,15 @@
             <!-- <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
               </div> -->
-            <a href="./examples/profile.html" class="dropdown-item">
+            <!-- <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
-            </a>
-            <a href="?logout='1'" class="dropdown-item">
+            </a> -->
+            <a href="<?=$this->session->user_type?>/logout" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
+
           </div>
         </li>
       </ul>
