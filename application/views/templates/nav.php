@@ -1,4 +1,4 @@
-<?php if ($this->session->user_type === "admin") {?>
+<?php if ($this->session->user_type == "admin") {?>
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
   <div class="container-fluid">
     <!-- Toggler -->
@@ -25,7 +25,7 @@
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
           </a> -->
-          <a href="<?=$this->session->user_type?>/logout" class="dropdown-item">
+          <a href="<?=base_url("main/logout")?>" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>
@@ -66,7 +66,7 @@
           </a>
         </li>
         <li class="nav-item text-center">
-        <a href="<?=$this->session->user_type?>/logout" class="dropdown-item bg-danger">
+        <a href="<?=base_url("main/logout")?>" class="dropdown-item bg-danger">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>
@@ -103,7 +103,7 @@
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a> -->
-            <a href="<?=$this->session->user_type?>/logout" class="dropdown-item">
+            <a href="<?=base_url("main/logout")?>" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>

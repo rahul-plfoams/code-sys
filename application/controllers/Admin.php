@@ -18,11 +18,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
-    public function logout()
-    {
-        $this->session->unset_userdata("username", "password");
-        return redirect("login");
-    }
+
     public function create_user()
     {
         $name = $this->input->post("name");

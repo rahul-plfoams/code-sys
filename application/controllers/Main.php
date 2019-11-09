@@ -19,15 +19,19 @@ class Main extends CI_Controller
                         foreach ($userData as $key => $value) {
                             $this->session->set_userdata($key, $value);
                         }
-                        echo "<pre>";
-                        print_r($this->session);
                         return redirect("admin");
 
                         break;
                     case "staff":
+                        foreach ($userData as $key => $value) {
+                            $this->session->set_userdata($key, $value);
+                        }
                         return redirect("staff");
                         break;
                     case "vendor":
+                        foreach ($userData as $key => $value) {
+                            $this->session->set_userdata($key, $value);
+                        }
                         return redirect("vendor");
                         break;
                     default:
@@ -131,7 +135,7 @@ class Main extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('Main');
+        return redirect('login');
     }
 
 }
