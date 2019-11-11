@@ -49,25 +49,6 @@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <!-- <div id="overview" class="container tab-pane active">
-                    <div class=" row">
-                        <?=form_label("Company Name", "company_name", "class='col-sm-2 col-form-label'")?>
-                        <?=form_label($user->company_name, "company_name", "class='col-sm-10 col-form-label text-dark'")?>
-                    </div>
-                    <div class=" row">
-                        <?=form_label("Name", "name", "class='col-sm-2 col-form-label'")?>
-                        <?=form_label($user->name, "company_name", "class='col-sm-10 col-form-label text-dark'")?>
-                    </div>
-                    <div class=" row">
-                        <?=form_label("Mobile", "mobile", "class='col-sm-2 col-form-label'")?>
-                        <?=form_label($user->mobile, "company_name", "class='col-sm-10 col-form-label text-dark'")?>
-                    </div>
-                    <div class=" row">
-                        <?=form_label("Role", "role", "class='col-sm-2 col-form-label'")?>
-                        <?=form_label($user->user_type, "company_name", "class='col-sm-10 col-form-label text-dark'")?>
-                    </div>
-
-                </div> -->
                 <div id="billing" class="container tab-pane fade">
                     <div class=" row">
                         <div class="col-sm-4">
@@ -220,110 +201,17 @@
                     </div>
                 </div>
                 <div id="ledger" class="container tab-pane fade">
-                    <div id="importFrm">
-                        <?=form_open("importdata.php?id=")?>
-                        <?=$this->table->add_row(form_upload(["class" => "chooseFileInput", "name" => "file"]), form_submit(["class" => "btn btn-primary", "name" => "importSubmit", "value" => "IMPORT"]))->generate();?>
-                        <?=form_close()?>
-                        <?=$this->table->set_heading(["date", "particulars", "remark", "voucher_type", "voucher_no", "debit", "credit"])->generate();?>
-                        <!-- <table id=" customers" class="unfiltered table table-bordered ">
-                            <tr>
-                                <th>date</th>
-                                <th>particulars</th>
-                                <th>remark</th>
-                                <th>voucher_type</th>
-                                <th>voucher_no</th>
-                                <th>debit</th>
-                                <th>credit</th>
-                            </tr>
-                            <tr>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                            </tr>
-                        </table> -->
-                        <!-- pagination list -->
-                        <ul class="pagination">
-                        </ul>
-                        --------------------------
-                        <!-- pagination end -->
-                    </div>
+
+                    this is ledger section
                 </div>
-                <div id="products" class="container tab-pane active row">
-                    <div class="col-lg-12">
-                        <form>
-                            <div class=" row">
-                                <div class="col-lg-5 mx-auto mt-4">
-                                    <input type="text" size="30" placeholder="search product here..."
-                                        class="searching form-control" onkeyup="showResult(this.value)">
-                                </div>
-                            </div>
-                            <div class=" row">
-                                <div class="col">
-                                    <div id="livesearch">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- <form action="storePref.php?id=" method="post"> -->
-                    <?=form_open("storePref.php?id=")?>
-                    <?php $table_header = ["Sr. No", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "remark"]?>
-                    <?=$this->table->set_heading($table_header)->generate()?>
-                    <!-- <table class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <td class="align-middle">Sr. No</td>
-                                    <td class="align-middle">Name</td>
-                                    <td class="align-middle">Grade</td>
-                                    <td class="align-middle">Quality</td>
-                                    <td class="align-middle">Rate</td>
-                                    <td class="align-middle">Unit</td>
-                                    <td class="align-middle">GST</td>
-                                    <td class="align-middle">remark</td>
-                                </tr>
-                            </thead>
-                            <tbody id="showProduct">
-                            </tbody>
-                        </table> -->
-                    <?=form_submit(["value" => "Save", "class" => "btn btn-primary"])?>
-                    <?=form_close()?>
-                    <!-- <table id="listProducts" class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <td class="align-middle">Sr. No</td>
-                                    <td class="align-middle">Name</td>
-                                    <td class="align-middle">Grade</td>
-                                    <td class="align-middle">Quality</td>
-                                    <td class="align-middle">Rate</td>
-                                    <td class="align-middle">Unit</td>
-                                    <td class="align-middle">GST</td>
-                                    <td class="align-middle">remark</td>
-                                    <td class="align-middle">actions</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle">
-                                        <a class="btn btn-info" onclick="editVendorProduct(this)" href="#"
-                                            data-p_in="">Edit</a>
-                                        <a class="btn btn-danger" href="delProduct.php?id=">delete</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table> -->
-                    <?=$this->table->set_heading($table_header)->generate()?>
+                <div id="products" class="container tab-pane fade row">
+                    this is products section
+                </div>
+                <div id="order" class="container tab-pane fade row">
+                    this is order history section
+                </div>
+                <div id="placeorder" class="container tab-pane active row">
+                    this is products section
                 </div>
 
             </div>
