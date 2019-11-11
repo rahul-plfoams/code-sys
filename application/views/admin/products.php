@@ -4,7 +4,7 @@
             Products
         </div>
         <div class="card-body text-center">
-            <?=form_open("admin/products", ["id" => "form_products"])?>
+            <?=form_open("admin/add_product", ["id" => "form_products"])?>
 
             <div class="form-group row">
                 <div class="col-lg-1 p-1">
@@ -33,12 +33,12 @@
                 </div>
                 <div class="col-lg-1 p-1">
                     <?=form_label("Unit", "product_unit", "class='col col-form-label'")?>
-                    <?=form_dropdown("units", ["mm", "kg", "Sq.Ft", "Pcs", "Meter"], "mm", "class='form-control'")?>
+                    <?=form_dropdown("units", ["mm", "kg", "Sq.Ft", "Pcs", "Meter"], "mm", "class='form-control' id='product_unit'")?>
                 </div>
                 <div class="col-lg-2 p-0">
                     <?=form_label("Actions", "actions", "class='col-form-label'")?>
                     <div class=" btn-grp">
-                        <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Save"])?>
+                        <?=form_button(["type" => "submit", "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Save"])?>
                         <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "reset", "name" => "update", "content" => "Clear"], )?>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ foreach ($products->result() as $product) {
         $product->sale_rate,
         $product->gst_rate,
         $product->remark,
-        "<i class='text-info fas fa-edit'></i>" . nbs(2) . "<i class='text-danger fas fa-trash-alt'></i>"
+        "<i class='text-info fas fa-edit'></i>" . nbs(2) . anchor("admin/delete_product/$product->product_id", "<i class='text-danger fas fa-trash-alt'></i>")
     );}?>
             <?=$this->table->generate()?>
         </div>
@@ -67,26 +67,10 @@ foreach ($products->result() as $product) {
 </div>
 <script>
     $(document).ready(() => {
+
         $('#myTbl').DataTable({
-            dom: 'Bfrtip',
-            buttons: ['pdf', {
-                extend: 'print',
-                exportOptions: {
-                    columns: [1, 2, 3],
-                },
-                customize: function (win) {
-                    $(win.document.body)
-                        // .css('font-size', '10pt')
-                        .prepend(
-                            '<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
-                        );
-
-                    // $(win.document.body).find('table')
-                    //     .addClass('compact')
-                    //     .css('font-size', 'inherit');
-
-                }
-            }]
+            dom: 'lBfrtip',
         });
+
     });
 </script>

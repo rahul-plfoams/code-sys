@@ -30,6 +30,10 @@ class Admin_model extends CI_Model
     {
         $this->db->insert("products", $data);
     }
+    public function remove_product($id)
+    {
+        $this->db->where("product_id", $id)->delete("products");
+    }
     public function list_products()
     {
         return $this->db->get("products");

@@ -96,13 +96,13 @@ $input_classes = "form-control form-control-alternative";
 ?>
                 </tbody>
               </table>
+
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 <script>
 $(document).ready(()=>{

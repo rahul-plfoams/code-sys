@@ -16,14 +16,22 @@ class Main extends CI_Controller
             if ($userData) {
                 switch ($userData->user_type) {
                     case "admin":
-                        $this->session->set_userdata(["id" => $userData->id, "username" => $userData->username, "password" => $userData->password, "name" => $userData->name]);
-                        $this->session->userdata("username");
+                        foreach ($userData as $key => $value) {
+                            $this->session->set_userdata($key, $value);
+                        }
                         return redirect("admin");
+
                         break;
                     case "staff":
+                        foreach ($userData as $key => $value) {
+                            $this->session->set_userdata($key, $value);
+                        }
                         return redirect("staff");
                         break;
                     case "vendor":
+                        foreach ($userData as $key => $value) {
+                            $this->session->set_userdata($key, $value);
+                        }
                         return redirect("vendor");
                         break;
                     default:
@@ -127,7 +135,7 @@ class Main extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('Main');
+        return redirect('login');
     }
 
 }
