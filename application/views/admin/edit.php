@@ -245,31 +245,6 @@
                         <?=$this->table->add_row(form_upload(["class" => "chooseFileInput", "name" => "file"]), form_submit(["class" => "btn btn-primary", "name" => "importSubmit", "value" => "IMPORT"]))->generate();?>
                         <?=form_close()?>
                         <?=$this->table->set_heading(["date", "particulars", "remark", "voucher_type", "voucher_no", "debit", "credit"])->generate();?>
-                        <!-- <table id=" customers" class="unfiltered table table-bordered ">
-                            <tr>
-                                <th>date</th>
-                                <th>particulars</th>
-                                <th>remark</th>
-                                <th>voucher_type</th>
-                                <th>voucher_no</th>
-                                <th>debit</th>
-                                <th>credit</th>
-                            </tr>
-                            <tr>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                                <td class="align-middle"></td>
-                            </tr>
-                        </table> -->
-                        <!-- pagination list -->
-                        <ul class="pagination">
-                        </ul>
-                        --------------------------
-                        <!-- pagination end -->
                     </div>
                 </div>
                 <div id="products" class="container tab-pane fade row">

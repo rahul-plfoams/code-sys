@@ -69,7 +69,7 @@ foreach ($products->result() as $product) {
     $(document).ready(() => {
 
         $('#myTbl').DataTable({
-            dom: 'lBfrtip',
+            dom: 'lfrtipB'
         });
 
     });

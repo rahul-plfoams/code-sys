@@ -17,8 +17,15 @@ class Admin extends CI_Controller
         $this->load->view("templates/nav");
         $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
+        // $this->default_view("admin/index", $data);
     }
-
+    public function default_view($file, $data)
+    {
+        // $this->load->view('templates/header');
+        // $this->load->view("templates/nav");
+        // $this->load->view($file, $data);
+        // $this->load->view('templates/footer');
+    }
     public function create_user()
     {
         $name = $this->input->post("name");
