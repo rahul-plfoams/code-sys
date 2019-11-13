@@ -13,18 +13,18 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules("password", "Pass Code", "required");
         $this->form_validation->set_error_delimiters("<div class='text-danger'>", "</div>");
         $data['users'] = $this->users();
-        $this->load->view('templates/header');
-        $this->load->view("templates/nav");
-        $this->load->view('admin/index', $data);
-        $this->load->view('templates/footer');
-        // $this->default_view("admin/index", $data);
+        // $this->load->view('templates/header');
+        // $this->load->view("templates/nav");
+        // $this->load->view('admin/index', $data);
+        // $this->load->view('templates/footer');
+        $this->default_view("admin/index", $data);
     }
     public function default_view($file, $data)
     {
-        // $this->load->view('templates/header');
-        // $this->load->view("templates/nav");
-        // $this->load->view($file, $data);
-        // $this->load->view('templates/footer');
+        $this->load->view('templates/header');
+        $this->load->view("templates/nav");
+        $this->load->view($file, $data);
+        $this->load->view('templates/footer');
     }
     public function create_user()
     {
@@ -47,11 +47,12 @@ class Admin extends CI_Controller
     }
     public function edit($id)
     {
-        $this->load->view('templates/header');
-        $this->load->view("templates/nav");
+        // $this->load->view('templates/header');
+        // $this->load->view("templates/nav");
         $data["user"] = $this->db->join("vendor_details", "id")->where("id", $id)->get("users")->row();
-        $this->load->view('admin/edit', $data);
-        $this->load->view('templates/footer');
+        // $this->load->view('admin/edit', $data);
+        $this->default_view("admin/edit", $data);
+        // $this->load->view('templates/footer');
     }
     public function update($data)
     {
@@ -60,11 +61,12 @@ class Admin extends CI_Controller
     public function products()
     {
 
-        $this->load->view('templates/header');
-        $this->load->view("templates/nav");
+        // $this->load->view('templates/header');
+        // $this->load->view("templates/nav");
         $data["products"] = $this->Admin_model->list_products();
-        $this->load->view('admin/products', $data);
-        $this->load->view('templates/footer');
+        // $this->load->view('admin/products', $data);
+        $this->default_view('admin/products', $data);
+        // $this->load->view('templates/footer');
     }
     public function add_product()
     {
