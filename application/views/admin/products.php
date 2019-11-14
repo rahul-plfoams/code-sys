@@ -39,7 +39,7 @@
                     <?=form_label("Actions", "actions", "class='col-form-label'")?>
                     <div class=" btn-grp">
                         <?=form_button(["type" => "submit", "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Save"])?>
-                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "reset", "name" => "update", "content" => "Clear"], )?>
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "reset", "name" => "update", "content" => "Clear"])?>
                     </div>
                 </div>
             </div>

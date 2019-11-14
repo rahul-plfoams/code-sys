@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="btn-grp">
-                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
                         <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
                     </div>
                     <?=form_close()?>
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                     <div class="btn-grp">
-                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
                         <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
                     </div>
                     <?=form_close()?>
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="btn-grp">
-                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
                         <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
                     </div>
                     <?=form_close()?>
@@ -234,8 +234,8 @@
                         </div>
                     </div>
                     <div class="btn-grp">
-                        <?=form_button([ "class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
-                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
+                        <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"])?>
                     </div>
                     <?=form_close()?>
                 </div>
