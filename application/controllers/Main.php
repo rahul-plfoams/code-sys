@@ -6,10 +6,7 @@ class Main extends CI_Controller
 
     public function index()
     {
-        $this->form_validation->set_rules("username", "User Name", "required");
-        $this->form_validation->set_rules("password", "Pass Code", "required");
-        $this->form_validation->set_error_delimiters("<div class='text-danger'>", "</div>");
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run("login")) {
             $username = $this->input->post("username");
             $password = $this->input->post("password");
             $userData = $this->login_model->isvalidate($username, $password);
@@ -78,11 +75,6 @@ class Main extends CI_Controller
 
     public function login_action()
     {
-        $this->load->helper('security');
-        $this->load->library('form_validation');
-
-        // $this->form_validation->set_rules('username', 'Username:', 'required|trim|xss_clean|callback_validation');
-        // $this->form_validation->set_rules('password', 'Password:', 'required|trim');
 
         if ($this->form_validation->run()) {
             $data = array(
@@ -93,29 +85,6 @@ class Main extends CI_Controller
             redirect('Main/data');
         } else {
             redirect('Main');
-            // $this->load->view('templates/header');
-            // $this->load->view('login_view');
-            // $this->load->view('templates/footer');
-        }
-    }
-
-    public function signin_validation()
-    {
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('username', 'Username', 'trim|xss_clean|is_unique[signup.username]');
-
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
-
-        $this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|trim|matches[password]');
-
-        $this->form_validation->set_message('is_unique', 'username already exists');
-
-        if ($this->form_validation->run()) {
-            echo "Welcome, you are logged in.";
-        } else {
-
-            $this->load->view('signin');
         }
     }
 
