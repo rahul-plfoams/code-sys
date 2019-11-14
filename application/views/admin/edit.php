@@ -248,8 +248,7 @@
                         <form>
                             <div class="form-group row">
                                 <div class="col-lg-5 mx-auto mt-4">
-                                    <input type="text" size="30" placeholder="search product here..."
-                                        class="searching form-control" onkeyup="showResult(this.value)">
+                                    <input type="text" id="searchBox" size="30" placeholder="search product here..." class="searching form-control" onkeyup="showResult(this.value)">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -260,13 +259,10 @@
                             </div>
                         </form>
                     </div>
-                    <?=form_open("storePref.php?id=")?>
-                    <?php $table_header = ["Sr. No", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "remark"]?>
-                    <?=$this->table->set_heading($table_header)->generate()?>
+                   <div id="productPrefs">
 
-                    <?=form_submit(["value" => "Save", "class" => "btn btn-primary"])?>
-                    <?=form_close()?>
-                    <?=$this->table->set_heading($table_header)->generate()?>
+                   </div>
+
                 </div>
             </div>
         </div>
