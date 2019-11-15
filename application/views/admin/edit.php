@@ -160,10 +160,6 @@
                             <?=form_label("Email", "email", "class='col-form-label'")?>
                             <?=form_input(["class" => "form-control", "id" => "email", "name" => "email", "placeholder" => "Type email here..", "value" => $user->email])?>
                         </div>
-                        <!-- <div class="col-sm-4">
-                            <?=form_label("Phone", "phone", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "phone", "name" => "phone", "placeholder" => "Type phone here..", "value" => $user->phone])?>
-                        </div> -->
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-8">
@@ -235,7 +231,11 @@
                     </div>
                     <div class="btn-grp">
                         <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
+<<<<<<< HEAD
                         <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"])?>
+=======
+                        <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"], )?>
+>>>>>>> vendor
                     </div>
                     <?=form_close()?>
                 </div>
@@ -252,8 +252,7 @@
                         <form>
                             <div class="form-group row">
                                 <div class="col-lg-5 mx-auto mt-4">
-                                    <input type="text" size="30" placeholder="search product here..."
-                                        class="searching form-control" onkeyup="showResult(this.value)">
+                                    <input type="text" id="searchBox" size="30" placeholder="search product here..." class="searching form-control" onkeyup="showResult(this.value)">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -264,61 +263,10 @@
                             </div>
                         </form>
                     </div>
-                    <!-- <form action="storePref.php?id=" method="post"> -->
-                    <?=form_open("storePref.php?id=")?>
-                    <?php $table_header = ["Sr. No", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "remark"]?>
-                    <?=$this->table->set_heading($table_header)->generate()?>
-                    <!-- <table class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <td class="align-middle">Sr. No</td>
-                                    <td class="align-middle">Name</td>
-                                    <td class="align-middle">Grade</td>
-                                    <td class="align-middle">Quality</td>
-                                    <td class="align-middle">Rate</td>
-                                    <td class="align-middle">Unit</td>
-                                    <td class="align-middle">GST</td>
-                                    <td class="align-middle">remark</td>
-                                </tr>
-                            </thead>
-                            <tbody id="showProduct">
-                            </tbody>
-                        </table> -->
-                    <?=form_submit(["value" => "Save", "class" => "btn btn-primary"])?>
-                    <?=form_close()?>
-                    <!-- <table id="listProducts" class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <td class="align-middle">Sr. No</td>
-                                    <td class="align-middle">Name</td>
-                                    <td class="align-middle">Grade</td>
-                                    <td class="align-middle">Quality</td>
-                                    <td class="align-middle">Rate</td>
-                                    <td class="align-middle">Unit</td>
-                                    <td class="align-middle">GST</td>
-                                    <td class="align-middle">remark</td>
-                                    <td class="align-middle">actions</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle"></td>
-                                    <td class="align-middle">
-                                        <a class="btn btn-info" onclick="editVendorProduct(this)" href="#"
-                                            data-p_in="">Edit</a>
-                                        <a class="btn btn-danger" href="delProduct.php?id=">delete</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table> -->
-                    <?=$this->table->set_heading($table_header)->generate()?>
+                   <div id="productPrefs">
+
+                   </div>
+
                 </div>
             </div>
         </div>
