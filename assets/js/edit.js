@@ -21,7 +21,7 @@ showResult = (val) => {
     if (val.length === 0) {
         $("#livesearch").html("").css("border",0); 
     } else {
-        $.post("http://code-sys/ajax/products",
+        $.post("ajax/products",
         {query:val},
         (res)=>{
                 $("#livesearch").html(res)
