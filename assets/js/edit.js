@@ -7,29 +7,31 @@
         });
     };
 })(jQuery);
-
 $("[id^=form_] input:text").prop("readonly", true);
 $("input.searching").attr("readonly", false);
-
-
 $("button:contains('Edit')").click(function () {
     $("[id^=form_] input:text").toggleReadonly();
     $("[type='submit']").removeAttr("disabled");
 });
-
 showResult = (val) => {
     if (val.length === 0) {
-        $("#livesearch").html("").css("border",0); 
+        $("#livesearch").html("").css("border", 0);
     } else {
-        $.post("ajax/products",
-        {query:val},
-        (res)=>{
+        $.post("http://code-sys/ajax/products", {
+                query: val
+            },
+            (res) => {
                 $("#livesearch").html(res)
             });
     }
 }
-
-clearsearch=()=>{
+clearsearch = () => {
     $("#livesearch").html("");
     $("#searchBox").val("");
 }
+
+// $(document).ready(()=>{
+    $(".fa-check").click(() => {
+        console.log("button clicked");
+    });
+// });

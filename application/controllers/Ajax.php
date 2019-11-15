@@ -15,7 +15,7 @@ class ajax extends CI_controller
             ];
             $this->table->set_heading($table_header)->set_template($template);
             foreach ($result as $row) {
-                $this->table->add_row($row->product_name, $row->grade, $row->quality, '<i class="fas fa-check text-success" onclick="addThisProduct(this)"></i>' . nbs(2) . '<i onclick="clearsearch()" class="fas fa-times text-danger"></i>');
+                $this->table->add_row($row->product_name, $row->grade, $row->quality, '<i class="fas fa-check text-success" product_id=' . $row->product_id . '></i>' . nbs(2) . '<i onclick="clearsearch()" class="fas fa-times text-danger"></i>');
             }
             echo $this->table->generate();
         } else {
