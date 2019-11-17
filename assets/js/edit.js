@@ -7,31 +7,54 @@
         });
     };
 })(jQuery);
-$("[id^=form_] input:text").prop("readonly", true);
-$("input.searching").attr("readonly", false);
-$("button:contains('Edit')").click(function () {
-    $("[id^=form_] input:text").toggleReadonly();
-    $("[type='submit']").removeAttr("disabled");
-});
-showResult = (val) => {
-    if (val.length === 0) {
-        $("#livesearch").html("").css("border", 0);
-    } else {
-        $.post("http://code-sys/ajax/products", {
-                query: val
-            },
-            (res) => {
-                $("#livesearch").html(res)
-            });
-    }
-}
-clearsearch = () => {
-    $("#livesearch").html("");
-    $("#searchBox").val("");
-}
-
-// $(document).ready(()=>{
-    $(".fa-check").click(() => {
-        console.log("button clicked");
-    });
+// $("[id^=form_] input:text").prop("readonly", true);
+// $("input.searching").attr("readonly", false);
+// $("button:contains('Edit')").click(function () {
+//     $("[id^=form_] input:text").toggleReadonly();
+//     $("[type='submit']").removeAttr("disabled");
 // });
+// showResult = (val) => {
+//     if (val.length === 0) {
+//         $("#livesearch").html("").css("border", 0);
+//     } else {
+//         $.post("http://code-sys/ajax/products", {
+//                 query: val
+//             },
+//             (res) => {
+//                 $("#livesearch").html(res)
+//             });
+//     }
+// }
+// clearsearch = () => {
+//     $("#livesearch").html("");
+//     $("#searchBox").val("");
+// }
+
+$(document).ready(function () {
+    $("[id^=form_] input:text").prop("readonly", true);
+    $("input.searching").attr("readonly", false);
+    $("button:contains('Edit')").click(function () {
+        $("[id^=form_] input:text").toggleReadonly();
+        $("[type='submit']").removeAttr("disabled");
+    });
+    showResult = (val) => {
+        if (val.length === 0) {
+            $("#liveSearch").html("").css("border", 0);
+        } else {
+            $.post("http://code-sys/ajax/products", {
+                    query: val
+                },
+                (res) => {
+                    $("#liveSearch").html(res)
+                });
+        }
+    }
+    clearSearch = () => {
+        $("#liveSearch").html("");
+        $("#searchBox").val("");
+    }
+    addSearch=(product_id)=>{
+        alert(product_id);
+    }
+    
+})

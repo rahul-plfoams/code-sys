@@ -253,7 +253,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col">
-                                    <div id="livesearch">
+                                    <div id="liveSearch">
                                     </div>
                                 </div>
                             </div>
