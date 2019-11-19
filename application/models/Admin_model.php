@@ -2,7 +2,7 @@
 class Admin_model extends CI_Model
 {
     //users
-    public function getusers()
+    public function getUsers()
     {
         return $this->db->join("vendor_details", "id")
             ->get("users");
@@ -10,8 +10,8 @@ class Admin_model extends CI_Model
     }
     public function new_user($name, $mobile, $user_type, $email, $password)
     {
-        $logindata = ["name" => $name, "mobile" => $mobile, "user_type" => $user_type, "email" => $email, "password" => $password];
-        $this->db->insert("users", $logindata);
+        $loginData = ["name" => $name, "mobile" => $mobile, "user_type" => $user_type, "email" => $email, "password" => $password];
+        $this->db->insert("users", $loginData);
         $this->db->insert("vendor_details", ["status" => 1]);
     }
     public function delete_user($id)

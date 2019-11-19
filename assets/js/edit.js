@@ -7,29 +7,6 @@
         });
     };
 })(jQuery);
-// $("[id^=form_] input:text").prop("readonly", true);
-// $("input.searching").attr("readonly", false);
-// $("button:contains('Edit')").click(function () {
-//     $("[id^=form_] input:text").toggleReadonly();
-//     $("[type='submit']").removeAttr("disabled");
-// });
-// showResult = (val) => {
-//     if (val.length === 0) {
-//         $("#livesearch").html("").css("border", 0);
-//     } else {
-//         $.post("http://code-sys/ajax/products", {
-//                 query: val
-//             },
-//             (res) => {
-//                 $("#livesearch").html(res)
-//             });
-//     }
-// }
-// clearsearch = () => {
-//     $("#livesearch").html("");
-//     $("#searchBox").val("");
-// }
-
 $(document).ready(function () {
     $("[id^=form_] input:text").prop("readonly", true);
     $("input.searching").attr("readonly", false);
@@ -54,7 +31,23 @@ $(document).ready(function () {
         $("#searchBox").val("");
     }
     addSearch=(product_id)=>{
-        alert(product_id);
+        $.post("http://code-sys/ajax/addPref",{product_id:product_id},
+        (res)=>{
+            $("#addPref").html(res);
+        });
     }
-    
+    addToList=(vendor)=>{
+        alert(vendor);
+        // $.post("http://code-sys/ajax/savePref",{product_id:product_id},
+        // (res)=>{
+        //     $("#productPref").html(res);
+        // })
+    }
+    delFromList=(vendor)=>{
+        alert(vendor);
+        // $.post("http://code-sys/ajax/delPref",{product_id:product_id},
+        // (res)=>{
+        //     $("#productPref").html(res);
+        // })
+    }
 })

@@ -237,7 +237,7 @@
                 </div>
                 <div id="ledger" class="container tab-pane fade">
                     <div id="importFrm">
-                        <?=form_open("importdata.php?id=")?>
+                        <?=form_open("importData.php?id=")?>
                         <?=$this->table->add_row(form_upload(["class" => "chooseFileInput", "name" => "file"]), form_submit(["class" => "btn btn-primary", "name" => "importSubmit", "value" => "IMPORT"]))->generate();?>
                         <?=form_close()?>
                         <?=$this->table->set_heading(["date", "particulars", "remark", "voucher_type", "voucher_no", "debit", "credit"])->generate();?>
@@ -259,10 +259,17 @@
                             </div>
                         </form>
                     </div>
-                   <div id="productPrefs">
+                    <div id="addPref">
+                    </div>
+                   <div id="savePref">
 
                    </div>
-
+<div id="test">
+<?php
+echo "<pre>";
+print_r($user->id);
+?>
+</div>
                 </div>
             </div>
         </div>

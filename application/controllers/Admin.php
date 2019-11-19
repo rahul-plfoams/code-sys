@@ -31,7 +31,7 @@ class Admin extends CI_controller
     }
     public function users()
     {
-        return $users = $this->Admin_model->getusers()->result();
+        return $users = $this->Admin_model->getUsers()->result();
     }
     public function delete($id)
     {

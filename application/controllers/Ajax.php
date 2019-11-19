@@ -22,4 +22,39 @@ class ajax extends CI_controller
             echo "No records";
         }
     }
+    public function addPref()
+    {
+        $product_id = $this->input->post("product_id");
+        $result = $this->db->where("product_id", $product_id)->get("products")->result();
+        $table_header = ["ID", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "Remark", "Actions"];
+        $template = [
+            'table_open' => '<table class="table table-bordered text-center">',
+        ];
+        $this->table->set_heading($table_header)->set_template($template);
+        foreach ($result as $row) {
+            $this->table->add_row(
+                $row->product_id,
+                $row->product_name,
+                $row->grade,
+                $row->quality,
+                form_input(["value" => $row->sale_rate, "class" => "text-center form-control"]),
+                $row->unit,
+                $row->gst_rate,
+                form_input(["value" => $row->remark, "class" => "text-center form-control"]),
+                '<i onclick="addToList()" class="fas fa-check text-success" ></i>'
+                . nbs(2) .
+                '<i onclick="delFromList()" class="fas fa-times text-danger"></i>');
+        }
+        echo $this->table->generate();
+        // echo "<pre>";
+        // print_r($result);
+    }
+    public function savePref()
+    {
+        $this->input->post("");
+    }
+    public function delPref()
+    {
+        $this->input->post("");
+    }
 }
