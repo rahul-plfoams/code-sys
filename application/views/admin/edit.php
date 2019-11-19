@@ -40,7 +40,6 @@
             <div class="tab-content">
                 <div id="overview" class="container tab-pane active">
                     <?=form_open("admin/overview", ["id" => "form_overview"])?>
-
                     <div class="form-group row">
                         <?=form_label("Company Name", "company_name", "class='col-sm-2 col-form-label'")?>
                         <?=form_input(["class" => "form-control col-sm-10", "id" => "company_name", "name" => "company_name", "placeholder" => "Type Company Name here", "value" => $user->company_name])?>
@@ -58,7 +57,6 @@
                         <?=form_label("Role", "role", "class='col-sm-2 col-form-label'")?>
                         <?=form_input(["class" => "form-control col-sm-10", "id" => "role", "name" => "role", "placeholder" => "Type user role here", "value" => $user->user_type])?>
                     </div>
-
                     <div class="btn-grp">
                         <?=form_button(["class" => "btn btn-dark button btnPush btnBlueGreen", "content" => "Edit"])?>
                         <?=form_button(["class" => "btn btn-success button btnPush btnBlueGreen", "type" => "submit", "name" => "update", "content" => "Save", "disabled" => "true"])?>
@@ -265,7 +263,6 @@
 <?php
 $data = $this->db->join("products", "product_id")->where("vendor_id", $user->id)->get("vendor_pref")->result();
 echo "<pre>";
-
 $table_header = ["Name", "Grade", "Quality", "Rate", "GST", "Remark", "Actions"];
 $template = [
     'table_open' => '<table class="table table-bordered text-center">',
@@ -289,7 +286,6 @@ echo $this->table->generate();
 ?>
                    </div>
 <div id="test">
-
 </div>
                 </div>
             </div>
@@ -298,5 +294,8 @@ echo $this->table->generate();
 </div>
 <script>
 const vendor=<?=$user->id?>;
+$(document).ready(()=>{
+        $('#savePref pre table').DataTable();
+});
 </script>
 <script type="text/javascript" src="<?=base_url("assets/js/edit.js")?>"></script>

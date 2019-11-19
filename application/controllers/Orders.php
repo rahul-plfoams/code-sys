@@ -4,6 +4,9 @@ class Orders extends CI_controller
 {
     public function index()
     {
-        echo "this is orders page";
+        $this->load->view('templates/header');
+        $this->load->view("templates/nav");
+        $this->load->view("admin/orders");
+        $this->load->view('templates/footer');
     }
 }
