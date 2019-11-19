@@ -50,7 +50,8 @@ $(document).ready(function () {
                     remark: $(remark).val()
                 },
                 (res) => {
-                    $("#savePref").html(res)
+                    $("#savePref").html(res);
+                    $('#savePref pre table').DataTable();
                 });
         }
     });
@@ -60,6 +61,7 @@ $(document).ready(function () {
             $.post("http://code-sys/ajax/delPref", {p_in:$(p_in).val(),vendor:vendor},
                 (res) => {
                     $("#savePref").html(res);
+                    $('#savePref pre table').DataTable();
                 }
             )
         }

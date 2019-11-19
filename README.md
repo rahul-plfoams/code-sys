@@ -8,4 +8,12 @@
     -edit/update
     <!-- -delete -->
 
+    --note
+delete in product addition
+    Delete validation
+
+    order page
+    
+
+
 
