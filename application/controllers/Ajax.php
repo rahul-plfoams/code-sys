@@ -26,14 +26,14 @@ class ajax extends CI_controller
     {
         $product_id = $this->input->post("product_id");
         $result = $this->db->where("product_id", $product_id)->get("products")->result();
-        $table_header = ["ID", "Name", "Grade", "Quality", "Rate", "Unit", "GST", "Remark", "Actions"];
+        $table_header = ["Name", "Grade", "Quality", "Rate", "Unit", "GST", "Remark", "Actions"];
         $template = [
             'table_open' => '<table class="table table-bordered text-center">',
         ];
         $this->table->set_heading($table_header)->set_template($template);
         foreach ($result as $row) {
             $this->table->add_row(
-                $row->product_id,
+                form_hidden(["value" => $row->product_id]) .
                 $row->product_name,
                 $row->grade,
                 $row->quality,
@@ -41,20 +41,83 @@ class ajax extends CI_controller
                 $row->unit,
                 $row->gst_rate,
                 form_input(["value" => $row->remark, "class" => "text-center form-control"]),
-                '<i onclick="addToList()" class="fas fa-check text-success" ></i>'
+                '<i  class="fas fa-check text-success" ></i>'
                 . nbs(2) .
-                '<i onclick="delFromList()" class="fas fa-times text-danger"></i>');
+                '<i  class="fas fa-times text-danger"></i>');
         }
         echo $this->table->generate();
-        // echo "<pre>";
-        // print_r($result);
     }
     public function savePref()
     {
-        $this->input->post("");
+        $vendor = $this->input->post("vendor");
+        $product_id = $this->input->post("id");
+        $rate = $this->input->post("rate");
+        $remark = $this->input->post("remark");
+        $data = [
+            "vendor_id" => $vendor,
+            "product_id" => $product_id,
+            "product_rate" => $rate,
+            "product_remark" => $remark,
+        ];
+        if ($this->db->insert("vendor_pref", $data)) {
+            // $data = $this->db->join("products", "product_id")->get("vendor_pref")->result();
+            // $table_header = ["Name", "Grade", "Quality", "Rate", "Unit", "GST", "Remark", "Actions"];
+            // $template = [
+            //     'table_open' => '<table class="table table-bordered text-center">',
+            // ];
+            // $this->table->set_heading($table_header)->set_template($template);
+            // foreach ($data as $row) {
+            //     $this->table->add_row(
+            //         $row->product_name,
+            //         $row->grade,
+            //         $row->quality,
+            //         $row->product_rate,
+            //         $row->unit,
+            //         $row->gst_rate,
+            //         $row->product_remark,
+            //         '<i  class="fas fa-check text-success" ></i>'
+            //         . nbs(2) .
+            //         '<i  class="fas fa-times text-danger"></i>',
+            //     );
+            // }
+            // echo $this->table->generate($data);
+            return $this->vendorPref($vendor);
+        };
+
+    }
+    public function vendorPref($vendor)
+    {
+        $data = $this->db->join("products", "product_id")->where("vendor_id", $vendor)->get("vendor_pref")->result();
+        echo "<pre>";
+
+        $table_header = ["Name", "Grade", "Quality", "Rate", "GST", "Remark", "Actions"];
+        $template = [
+            'table_open' => '<table class="table table-bordered text-center">',
+        ];
+        $this->table->set_heading($table_header)->set_template($template);
+        foreach ($data as $row) {
+            $this->table->add_row(
+                $row->product_name,
+                $row->grade,
+                $row->quality,
+                $row->product_rate . "/" . $row->unit,
+                $row->gst_rate,
+                $row->product_remark,
+                // '<i  class="fas fa-check text-success" ></i>'
+                // . nbs(2) .
+                form_hidden(["value" => $row->p_in]) .
+                '<i  class="fas fa-times text-danger"></i>',
+            );
+        }
+        echo $this->table->generate();
+
     }
     public function delPref()
     {
-        $this->input->post("");
+        $p_in = $this->input->post("p_in");
+        $vendor = $this->input->post("vendor");
+        $data = ["p_in" => $p_in];
+        $this->db->delete("vendor_pref", $data);
+        return $this->vendorPref($vendor);
     }
 }

@@ -30,24 +30,40 @@ $(document).ready(function () {
         $("#liveSearch").html("");
         $("#searchBox").val("");
     }
-    addSearch=(product_id)=>{
-        $.post("http://code-sys/ajax/addPref",{product_id:product_id},
-        (res)=>{
-            $("#addPref").html(res);
-        });
+    addSearch = (product_id) => {
+        $.post("http://code-sys/ajax/addPref", {
+                product_id: product_id
+            },
+            (res) => {
+                $("#addPref").html(res);
+            });
     }
-    addToList=(vendor)=>{
-        alert(vendor);
-        // $.post("http://code-sys/ajax/savePref",{product_id:product_id},
-        // (res)=>{
-        //     $("#productPref").html(res);
-        // })
-    }
-    delFromList=(vendor)=>{
-        alert(vendor);
-        // $.post("http://code-sys/ajax/delPref",{product_id:product_id},
-        // (res)=>{
-        //     $("#productPref").html(res);
-        // })
-    }
+    $("#addPref").click((event) => {
+        if ($(event.target).hasClass("fa-check")) {
+            $("#addPref").html("");
+            const [id, rate, remark] = $(event.target).parents("tr").children("td").children("input");
+            // alert("Vendor: "+vendor+" Rate: " + $(rate).val() + " Remark: " + $(remark).val());
+            $.post("http://code-sys/ajax/savePref", {
+                    vendor: vendor,
+                    id: $(id).val(),
+                    rate: $(rate).val(),
+                    remark: $(remark).val()
+                },
+                (res) => {
+                    $("#savePref").html(res)
+                });
+        }
+    });
+    $("#savePref").click((event) => {
+        if ($(event.target).hasClass("fa-times")) {
+            const [p_in] = $(event.target).parents("tr").children("td").children("input");
+            $.post("http://code-sys/ajax/delPref", {p_in:$(p_in).val(),vendor:vendor},
+                (res) => {
+                    $("#savePref").html(res);
+                }
+            )
+        }
+    });
+
+
 })

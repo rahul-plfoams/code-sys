@@ -262,17 +262,41 @@
                     <div id="addPref">
                     </div>
                    <div id="savePref">
+<?php
+$data = $this->db->join("products", "product_id")->where("vendor_id", $user->id)->get("vendor_pref")->result();
+echo "<pre>";
 
+$table_header = ["Name", "Grade", "Quality", "Rate", "GST", "Remark", "Actions"];
+$template = [
+    'table_open' => '<table class="table table-bordered text-center">',
+];
+$this->table->set_heading($table_header)->set_template($template);
+foreach ($data as $row) {
+    $this->table->add_row(
+        $row->product_name,
+        $row->grade,
+        $row->quality,
+        $row->product_rate . "/" . $row->unit,
+        $row->gst_rate,
+        $row->product_remark,
+        // '<i  class="fas fa-check text-success" ></i>'
+        // . nbs(2) .
+        form_hidden(["value" => $row->p_in]) .
+        '<i  class="fas fa-times text-danger"></i>',
+    );
+}
+echo $this->table->generate();
+?>
                    </div>
 <div id="test">
-<?php
-echo "<pre>";
-print_r($user->id);
-?>
+
 </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+const vendor=<?=$user->id?>;
+</script>
 <script type="text/javascript" src="<?=base_url("assets/js/edit.js")?>"></script>
