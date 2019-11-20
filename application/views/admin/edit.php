@@ -276,8 +276,6 @@ foreach ($data as $row) {
         $row->product_rate . "/" . $row->unit,
         $row->gst_rate,
         $row->product_remark,
-        // '<i  class="fas fa-check text-success" ></i>'
-        // . nbs(2) .
         form_hidden(["value" => $row->p_in]) .
         '<i  class="fas fa-times text-danger"></i>',
     );

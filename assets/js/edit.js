@@ -37,6 +37,7 @@ $(document).ready(function () {
             (res) => {
                 $("#addPref").html(res);
             });
+            clearSearch();
     }
     $("#addPref").click((event) => {
         if ($(event.target).hasClass("fa-check")) {

@@ -5,9 +5,11 @@ class ajax extends CI_controller
     public function products()
     {
         $res = $this->input->post('query');
-        $result = $this->db->like("product_name", $res)->get("products")->result();
-        // echo "<pre>";
-        // print_r($result);
+        $result = $this->db->like("product_name", $res)
+            ->or_like("grade", $res)
+            ->or_like("quality", $res)
+            ->get("products")->result();
+
         if (!empty($result)) {
             $table_header = ["Name", "Grade", "Quality", "Actions"];
             $template = [
@@ -21,6 +23,41 @@ class ajax extends CI_controller
         } else {
             echo "No records";
         }
+    }
+    public function vendorProducts()
+    {
+        $res = $this->input->post('query');
+        $vendor = $this->input->post('vendor');
+
+        $results = $this->db->join("products", "product_id")
+            ->join("users", "users.id=vendor_pref.vendor_id")
+            ->where("vendor_id", $vendor)
+            ->get("vendor_pref")
+            ->result();
+        $table_header = ["Name", "Grade", "Quality", "Actions"];
+        $template = [
+            'table_open' => '<table class="table table-bordered text-center">',
+        ];
+        $this->table->set_heading($table_header)->set_template($template);
+        foreach ($results as $result) {
+            if (preg_match("/$res/", strtolower($result->product_name)) || preg_match("/$res/", strtolower($result->grade)) || preg_match("/$res/", strtolower($result->quality))) {
+
+                $this->table->add_row($result->product_name, $result->grade, $result->quality, '<i onclick="addSearch(' . $result->product_id . ')" class="fas fa-check text-success" ></i>' . nbs(2) . '<i onclick="clearSearch()" class="fas fa-times text-danger"></i>');
+            }
+        }
+        echo $this->table->generate();
+    }
+    public function orderList()
+    {
+        $product_id = $this->input->post("product_id");
+        $vendor = $this->input->post("vendor");
+        $result = $this->db->join("products", "product_id")->where(["product_id" => $product_id, "vendor_id" => $vendor])->get("vendor_pref");
+        $table_header = ["Name", "Grade", "Quality", "Length", "Width", "Thickness", "Pcs", "Remark", "Actions"];
+        $template = [
+            'table_open' => '<table class="table table-bordered text-center">',
+        ];
+        $this->table->set_heading($table_header)->set_template($template);
+        echo $this->table->generate($result);
     }
     public function addPref()
     {
@@ -60,27 +97,6 @@ class ajax extends CI_controller
             "product_remark" => $remark,
         ];
         if ($this->db->insert("vendor_pref", $data)) {
-            // $data = $this->db->join("products", "product_id")->get("vendor_pref")->result();
-            // $table_header = ["Name", "Grade", "Quality", "Rate", "Unit", "GST", "Remark", "Actions"];
-            // $template = [
-            //     'table_open' => '<table class="table table-bordered text-center">',
-            // ];
-            // $this->table->set_heading($table_header)->set_template($template);
-            // foreach ($data as $row) {
-            //     $this->table->add_row(
-            //         $row->product_name,
-            //         $row->grade,
-            //         $row->quality,
-            //         $row->product_rate,
-            //         $row->unit,
-            //         $row->gst_rate,
-            //         $row->product_remark,
-            //         '<i  class="fas fa-check text-success" ></i>'
-            //         . nbs(2) .
-            //         '<i  class="fas fa-times text-danger"></i>',
-            //     );
-            // }
-            // echo $this->table->generate($data);
             return $this->vendorPref($vendor);
         };
 
@@ -103,8 +119,6 @@ class ajax extends CI_controller
                 $row->product_rate . "/" . $row->unit,
                 $row->gst_rate,
                 $row->product_remark,
-                // '<i  class="fas fa-check text-success" ></i>'
-                // . nbs(2) .
                 form_hidden(["value" => $row->p_in]) .
                 '<i  class="fas fa-times text-danger"></i>',
             );
@@ -119,5 +133,13 @@ class ajax extends CI_controller
         $data = ["p_in" => $p_in];
         $this->db->delete("vendor_pref", $data);
         return $this->vendorPref($vendor);
+    }
+    public function statusChange()
+    {
+        if ($this->input->post("status") == 1) {
+            echo "disabled";
+        } else {
+            echo "enabled";
+        }
     }
 }

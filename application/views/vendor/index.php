@@ -201,20 +201,62 @@
                     </div>
                 </div>
                 <div id="ledger" class="container tab-pane fade">
-
                     this is ledger section
                 </div>
                 <div id="products" class="container tab-pane fade row">
-                    this is products section
+                    <?php $table_header = ["Name", "Grade", "Quality", "Remark"];
+$template = ['table_open' => '<table class="table table-bordered text-center">'];
+$this->table->set_heading($table_header)->set_template($template);foreach ($products->result() as $row) {$this->table->add_row($row->product_name, $row->grade, $row->quality, $row->product_remark);}?>
+                    <?=$this->table->generate();?>
                 </div>
                 <div id="order" class="container tab-pane fade row">
                     this is order history section
                 </div>
                 <div id="placeorder" class="container tab-pane active row">
-                    this is products section
+                    <?=form_input(["id" => "searchBox", "class" => "mx-auto col-4 form-control", "placeholder" => "Search Here For placing Order"])?>
+                    <div id="liveSearch">
+
+
+                    </div>
+                    <div id="orderForm">
+
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(() => {
+        vendor=<?=$this->session->id?>;
+        $("#products table").DataTable();
+        $("#searchBox").keyup(()=>{
+            val=$("#searchBox").val();
+            if (val.length === 0) {
+            $("#liveSearch").html("").css("border", 0);
+        } else {
+            $.post("http://code-sys/ajax/vendorProducts", {
+                    query:val,
+                    vendor:vendor
+                },
+                (res) => {
+                    $("#liveSearch").html(res)
+                });
+        }});
+        clearSearch = () => {
+        $("#liveSearch").html("");
+        $("#searchBox").val("");
+    }
+    addSearch = (product_id) => {
+        $.post("http://code-sys/ajax/orderList", {
+                product_id: product_id,
+                vendor:vendor
+            },
+            (res) => {
+                $("#orderForm").html(res);
+            });
+            clearSearch();
+    }
+    })
+</script>

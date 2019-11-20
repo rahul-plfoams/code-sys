@@ -83,14 +83,14 @@ $input_classes = "form-control form-control-alternative";
                   </tr>
                 </thead>
                 <tbody>
-<?php foreach ($users as $user) {
+                  <?php foreach ($users as $user) {
     $status = $user->status == 1 ? 'enabled' : 'disabled';
     echo "<tr>
           <td>$user->name</td>
           <td>$user->mobile</td>
           <td>$user->user_type</td>
-          <td> <a href='admin/edit/$user->id'>Edit</a>/<a href='admin/delete/$user->id'>Delete</a> </td>
-          <td>$status</td>
+          <td> <a  href='admin/edit/$user->id'><i class='text-info fas fa-edit'></i></a>" . nbs(2) . "<a href='admin/delete/$user->id'><i class='text-danger fas fa-trash-alt'></i></a> </td>
+          <td id='accStatus'>$status</td>
           </tr>";
 }
 ?>
@@ -105,10 +105,21 @@ $input_classes = "form-control form-control-alternative";
   </div>
 </div>
 <script>
-$(document).ready(()=>{
+  $(document).ready(() => {
     $('table').DataTable({
-        dom: 'Bfrtip',
-        buttons: [ 'pdf', 'print' ]
+      dom: 'Bfrtip',
+      buttons: ['pdf', 'print']
     });
-});
+    $("#accStatus").click(() => {
+      status = $("#accStatus").text() === "enabled" ? 1 : 0;
+      console.log(status);
+      $.post("http://code-sys/ajax/statusChange", {
+          status: status
+        },
+        (res) => {
+          $("#accStatus").text(res);
+        }
+      )
+    });
+  });
 </script>
