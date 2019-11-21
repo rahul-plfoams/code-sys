@@ -151,7 +151,7 @@ class ajax extends CI_controller
                 $row->gst_rate,
                 $row->product_remark,
                 form_hidden(["value" => $row->p_in]) .
-                '<i  class="fas fa-times text-danger"></i>',
+                '<i  class="fas fa-times text-danger"></i>'
             );
         }
         echo $this->table->generate();
