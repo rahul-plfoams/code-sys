@@ -292,9 +292,6 @@ echo $this->table->generate();
 </div>
 <script>
 const vendor=<?=$user->id?>;
-// $(document).ready(()=>{
-//         $('#savePref pre table').DataTable();
-// });
 (function ($) {
     $.fn.toggleReadonly = function () {
         return this.each(function () {
@@ -305,6 +302,7 @@ const vendor=<?=$user->id?>;
     };
 })(jQuery);
 $(document).ready(function () {
+    $('#savePref pre table').DataTable();
     $("[id^=form_] input:text").prop("readonly", true);
     $("input.searching").attr("readonly", false);
     $("button:contains('Edit')").click(function () {
