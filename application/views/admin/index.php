@@ -113,7 +113,7 @@ $input_classes = "form-control form-control-alternative";
     $("#accStatus").click(() => {
       status = $("#accStatus").text() === "enabled" ? 1 : 0;
       console.log(status);
-      $.post("http://code-sys/ajax/statusChange", {
+      $.post("<?=base_url('ajax/statusChange')?>", {
           status: status
         },
         (res) => {

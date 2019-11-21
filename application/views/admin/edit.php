@@ -277,7 +277,7 @@ foreach ($data as $row) {
         $row->gst_rate,
         $row->product_remark,
         form_hidden(["value" => $row->p_in]) .
-        '<i  class="fas fa-times text-danger"></i>',
+        '<i  class="fas fa-times text-danger"></i>'
     );
 }
 echo $this->table->generate();
@@ -292,8 +292,78 @@ echo $this->table->generate();
 </div>
 <script>
 const vendor=<?=$user->id?>;
-$(document).ready(()=>{
-        $('#savePref pre table').DataTable();
-});
+// $(document).ready(()=>{
+//         $('#savePref pre table').DataTable();
+// });
+(function ($) {
+    $.fn.toggleReadonly = function () {
+        return this.each(function () {
+            var $this = $(this);
+            if ($this.attr("readonly")) $this.removeAttr("readonly");
+            else $this.attr("readonly", "readonly");
+        });
+    };
+})(jQuery);
+$(document).ready(function () {
+    $("[id^=form_] input:text").prop("readonly", true);
+    $("input.searching").attr("readonly", false);
+    $("button:contains('Edit')").click(function () {
+        $("[id^=form_] input:text").toggleReadonly();
+        $("[type='submit']").removeAttr("disabled");
+    });
+    showResult = (val) => {
+        if (val.length === 0) {
+            $("#liveSearch").html("").css("border", 0);
+        } else {
+            $.post("<?=base_url('ajax/products')?>", {
+                    query: val
+                },
+                (res) => {
+                    $("#liveSearch").html(res)
+                });
+        }
+    }
+    clearSearch = () => {
+        $("#liveSearch").html("");
+        $("#searchBox").val("");
+    }
+    addSearch = (product_id) => {
+        $.post("<?=base_url('ajax/addPref')?>", {
+                product_id: product_id
+            },
+            (res) => {
+                $("#addPref").html(res);
+            });
+            clearSearch();
+    }
+    $("#addPref").click((event) => {
+        if ($(event.target).hasClass("fa-check")) {
+            $("#addPref").html("");
+            const [id, rate, remark] = $(event.target).parents("tr").children("td").children("input");
+            $.post("<?=base_url('ajax/savePref')?>", {
+                    vendor: vendor,
+                    id: $(id).val(),
+                    rate: $(rate).val(),
+                    remark: $(remark).val()
+                },
+                (res) => {
+                    $("#savePref").html(res);
+                    $('#savePref pre table').DataTable();
+                });
+        }
+    });
+    $("#savePref").click((event) => {
+        if ($(event.target).hasClass("fa-times")) {
+            const [p_in] = $(event.target).parents("tr").children("td").children("input");
+            $.post("<?=base_url('ajax/delPref')?>", {p_in:$(p_in).val(),vendor:vendor},
+                (res) => {
+                    $("#savePref").html(res);
+                    $('#savePref pre table').DataTable();
+                }
+            )
+        }
+    });
+
+
+})
 </script>
-<script type="text/javascript" src="<?=base_url("assets/js/edit.js")?>"></script>
