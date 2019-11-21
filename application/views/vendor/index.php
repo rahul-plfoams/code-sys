@@ -210,7 +210,19 @@ $this->table->set_heading($table_header)->set_template($template);foreach ($prod
                     <?=$this->table->generate();?>
                 </div>
                 <div id="order" class="container tab-pane fade row">
-                    this is order history section
+<?php
+if (!empty($orders->result())) {
+    $table_header = ["Order No", "Date", "Status"];
+    $template = ['table_open' => '<table class="table table-bordered text-center">'];
+    $this->table->set_heading($table_header)->set_template($template);
+    foreach ($orders->result() as $order) {
+        $this->table->add_row($order->order_id, $order->order_generated, $order->order_status);
+    }
+    echo $this->table->generate();
+} else {
+    echo "No records Found";
+}
+?>
                 </div>
                 <div id="placeorder" class="container tab-pane active row">
                     <?=form_input(["id" => "searchBox", "class" => "mx-auto col-4 form-control", "placeholder" => "Search Here For placing Order"])?>
@@ -221,6 +233,13 @@ $this->table->set_heading($table_header)->set_template($template);foreach ($prod
                     <div id="orderForm">
 
                     </div>
+                    <div id="test">
+                    <?php
+echo "<pre>";
+// print_r($orders->result());
+
+?>
+                    </div>
                 </div>
 
             </div>
@@ -230,7 +249,7 @@ $this->table->set_heading($table_header)->set_template($template);foreach ($prod
 <script>
     $(document).ready(() => {
         vendor=<?=$this->session->id?>;
-        $("#products table").DataTable();
+        $("#products table,#order table,#orderForm table").DataTable();
         $("#searchBox").keyup(()=>{
             val=$("#searchBox").val();
             if (val.length === 0) {
@@ -248,13 +267,21 @@ $this->table->set_heading($table_header)->set_template($template);foreach ($prod
         $("#liveSearch").html("");
         $("#searchBox").val("");
     }
-    addSearch = (product_id) => {
+    addSearch = (product_index) => {
         $.post("http://code-sys/ajax/orderList", {
-                product_id: product_id,
-                vendor:vendor
+                product_index: product_index,
+                table_list_count: $("#orderForm table tr").length>0 ? $("#orderForm table tr").length : 0
             },
             (res) => {
-                $("#orderForm").html(res);
+                if($("#orderForm table tr").length>0)
+                {
+                    $("#orderForm table").append(res);
+                }
+                else
+                {
+                     $("#orderForm").html(res);
+                }
+                        $("#orderForm table").DataTable();
             });
             clearSearch();
     }

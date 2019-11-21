@@ -12,4 +12,8 @@ class Vendor_model extends CI_Model
             ->where("vendor_id", $vendor)
             ->get("vendor_pref");
     }
+    public function order_details($vendor_id)
+    {
+        return $this->db->where("vendor_id", $vendor_id)->get("orders");
+    }
 }

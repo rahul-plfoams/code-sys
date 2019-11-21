@@ -42,22 +42,53 @@ class ajax extends CI_controller
         foreach ($results as $result) {
             if (preg_match("/$res/", strtolower($result->product_name)) || preg_match("/$res/", strtolower($result->grade)) || preg_match("/$res/", strtolower($result->quality))) {
 
-                $this->table->add_row($result->product_name, $result->grade, $result->quality, '<i onclick="addSearch(' . $result->product_id . ')" class="fas fa-check text-success" ></i>' . nbs(2) . '<i onclick="clearSearch()" class="fas fa-times text-danger"></i>');
+                $this->table->add_row($result->product_name, $result->grade, $result->quality, '<i onclick="addSearch(' . $result->p_in . ')" class="fas fa-check text-success" ></i>' . nbs(2) . '<i onclick="clearSearch()" class="fas fa-times text-danger"></i>');
             }
         }
         echo $this->table->generate();
     }
     public function orderList()
     {
-        $product_id = $this->input->post("product_id");
-        $vendor = $this->input->post("vendor");
-        $result = $this->db->join("products", "product_id")->where(["product_id" => $product_id, "vendor_id" => $vendor])->get("vendor_pref");
-        $table_header = ["Name", "Grade", "Quality", "Length", "Width", "Thickness", "Pcs", "Remark", "Actions"];
-        $template = [
-            'table_open' => '<table class="table table-bordered text-center">',
-        ];
-        $this->table->set_heading($table_header)->set_template($template);
-        echo $this->table->generate($result);
+        $product_index = $this->input->post("product_index");
+        $table_list_count = $this->input->post("table_list_count");
+        $result = $this->db->join("products", "product_id")
+            ->where(["p_in" => $product_index])
+            ->get("vendor_pref")
+            ->row();
+        if ($table_list_count > 0) {
+            echo "<tr>
+<td>$result->product_name</td>
+<td>$result->grade</td>
+<td>$result->quality</td>
+<td>" . form_input(["class" => "form-control", "placeholder" => "Length"]) . "</td>
+<td>" . form_input(["class" => "form-control", "placeholder" => "Width"]) . "</td>
+<td>" . form_input(["class" => "form-control", "placeholder" => "Thickness"]) . "</td>
+<td>" . form_input(["class" => "form-control", "placeholder" => "Pcs"]) . "</td>
+<td>" . form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark"]) . "</td>
+<td><i  class='fas fa-times text-danger'></i></td>
+</tr>";
+        } else {
+
+            $table_header = ["Name", "Grade", "Quality", "Length", "Width", "Thickness", "Pcs", "Remark", "Actions"];
+            $template = [
+                'table_open' => '<table class="table table-bordered text-center">',
+            ];
+            $this->table->set_heading($table_header)->set_template($template);
+            $this->table->add_row(
+                $result->product_name,
+                $result->grade,
+                $result->quality,
+                form_input(["class" => "form-control", "placeholder" => "Length"]),
+                form_input(["class" => "form-control", "placeholder" => "Width"]),
+                form_input(["class" => "form-control", "placeholder" => "Thickness"]),
+                form_input(["class" => "form-control", "placeholder" => "Pcs"]),
+                form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark"]),
+                '<i  class="fas fa-times text-danger"></i>'
+            );
+            echo form_open("orderForm");
+            echo $this->table->generate();
+            echo form_submit("orderSubmit", "Place Order", "class='btn btn-primary'");
+            echo form_close();}
     }
     public function addPref()
     {
