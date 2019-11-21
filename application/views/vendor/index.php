@@ -234,11 +234,8 @@ if (!empty($orders->result())) {
 
                     </div>
                     <div id="test">
-                    <?php
-echo "<pre>";
-// print_r($orders->result());
 
-?>
+
                     </div>
                 </div>
 
@@ -255,7 +252,7 @@ echo "<pre>";
             if (val.length === 0) {
             $("#liveSearch").html("").css("border", 0);
         } else {
-            $.post("http://code-sys/ajax/vendorProducts", {
+            $.post("<?=base_url('ajax/vendorProducts')?>", {
                     query:val,
                     vendor:vendor
                 },
@@ -268,7 +265,7 @@ echo "<pre>";
         $("#searchBox").val("");
     }
     addSearch = (product_index) => {
-        $.post("http://code-sys/ajax/orderList", {
+        $.post("<?=base_url('ajax/orderList')?>", {
                 product_index: product_index,
                 table_list_count: $("#orderForm table tr").length>0 ? $("#orderForm table tr").length : 0
             },
