@@ -17,4 +17,15 @@ class Vendor extends CI_Controller
         $this->load->view('vendor/index', $data);
         $this->load->view('templates/footer');
     }
+    public function orderSubmit(){
+        $order["p_in"]=$this->input->post("p_in");
+        $order["length"]=$this->input->post("length");
+        $order["width"]=$this->input->post("width");
+        $order["thickness"]=$this->input->post("thickness");
+        $order["pcs"]=$this->input->post("pcs");
+        $order["remark"]=$this->input->post("remark");
+        echo "<pre>";
+        print_r($order);
+        
+    }
 }

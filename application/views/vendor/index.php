@@ -88,7 +88,6 @@
                             <?=form_label($user->billing_distance, "company_name", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
-
                 </div>
                 <div id="shipping" class="container tab-pane fade">
                     <div class=" row">
@@ -227,18 +226,12 @@ if (!empty($orders->result())) {
                 <div id="placeorder" class="container tab-pane active row">
                     <?=form_input(["id" => "searchBox", "class" => "mx-auto col-4 form-control", "placeholder" => "Search Here For placing Order"])?>
                     <div id="liveSearch">
-
-
                     </div>
                     <div id="orderForm">
-
                     </div>
                     <div id="test">
-
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -260,10 +253,11 @@ if (!empty($orders->result())) {
                     $("#liveSearch").html(res)
                 });
         }});
-        clearSearch = () => {
-        $("#liveSearch").html("");
-        $("#searchBox").val("");
-    }
+        clearSearch = () => 
+            {
+                $("#liveSearch").html("");
+                $("#searchBox").val("");
+            }
     addSearch = (product_index) => {
         $.post("<?=base_url('ajax/orderList')?>", {
                 product_index: product_index,

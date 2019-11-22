@@ -57,16 +57,16 @@ class ajax extends CI_controller
             ->row();
         if ($table_list_count > 0) {
             echo "<tr>
-<td>$result->product_name</td>
-<td>$result->grade</td>
-<td>$result->quality</td>
-<td>" . form_input(["class" => "form-control", "placeholder" => "Length"]) . "</td>
-<td>" . form_input(["class" => "form-control", "placeholder" => "Width"]) . "</td>
-<td>" . form_input(["class" => "form-control", "placeholder" => "Thickness"]) . "</td>
-<td>" . form_input(["class" => "form-control", "placeholder" => "Pcs"]) . "</td>
-<td>" . form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark"]) . "</td>
-<td><i  class='fas fa-times text-danger'></i></td>
-</tr>";
+                    <td>".$result->product_name.form_hidden(["p_in[]"=>$result->p_in])."</td>
+                    <td>$result->grade</td>
+                    <td>$result->quality</td>
+                    <td>" . form_input(["class" => "form-control", "placeholder" => "Length","name"=> "length[]"]) . "</td>
+                    <td>" . form_input(["class" => "form-control", "placeholder" => "Width","name"=> "width[]"]) . "</td>
+                    <td>" . form_input(["class" => "form-control", "placeholder" => "Thickness","name"=> "thickness[]"]) . "</td>
+                    <td>" . form_input(["class" => "form-control", "placeholder" => "Pcs","name"=> "pcs[]"]) . "</td>
+                    <td>" . form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark","name"=> "remark[]"]) . "</td>
+                    <td><i  class='fas fa-times text-danger'></i></td>
+                </tr>";
         } else {
 
             $table_header = ["Name", "Grade", "Quality", "Length", "Width", "Thickness", "Pcs", "Remark", "Actions"];
@@ -75,17 +75,17 @@ class ajax extends CI_controller
             ];
             $this->table->set_heading($table_header)->set_template($template);
             $this->table->add_row(
-                $result->product_name,
+                $result->product_name.form_hidden(["p_in[]"=>$result->p_in]),
                 $result->grade,
                 $result->quality,
-                form_input(["class" => "form-control", "placeholder" => "Length"]),
-                form_input(["class" => "form-control", "placeholder" => "Width"]),
-                form_input(["class" => "form-control", "placeholder" => "Thickness"]),
-                form_input(["class" => "form-control", "placeholder" => "Pcs"]),
-                form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark"]),
+                form_input(["class" => "form-control", "placeholder" => "Length","name"=> "length[]"]),
+                form_input(["class" => "form-control", "placeholder" => "Width","name"=> "width[]"]),
+                form_input(["class" => "form-control", "placeholder" => "Thickness","name"=> "thickness[]"]),
+                form_input(["class" => "form-control", "placeholder" => "Pcs","name"=> "pcs[]"]),
+                form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark","name"=> "remark[]"]),
                 '<i  class="fas fa-times text-danger"></i>'
             );
-            echo form_open("orderForm");
+            echo form_open("vendor/orderSubmit");
             echo $this->table->generate();
             echo form_submit("orderSubmit", "Place Order", "class='btn btn-primary'");
             echo form_close();}
