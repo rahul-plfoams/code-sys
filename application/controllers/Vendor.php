@@ -24,8 +24,20 @@ class Vendor extends CI_Controller
         $order["thickness"]=$this->input->post("thickness");
         $order["pcs"]=$this->input->post("pcs");
         $order["remark"]=$this->input->post("remark");
+        for($i=0;$i<count($order["p_in"]);$i++){
+            $data[$i]=[
+                    "p_in"=>$order["p_in"][$i],
+                    "length"=>$order["length"][$i],
+                    "width"=>$order["width"][$i],
+                    "thickness"=>$order["thickness"][$i],
+                    "pcs"=>$order["pcs"][$i],
+                    "remark"=>$order["remark"][$i]
+            ];
+        }
         echo "<pre>";
-        print_r($order);
+        print_r(serialize($data));
+        print_r(unserialize(serialize($data)));
+
         
     }
 }
