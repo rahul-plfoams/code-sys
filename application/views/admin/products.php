@@ -10,26 +10,32 @@
                 <div class="col-lg-1 p-1">
                     <?=form_label("Name", "product_name", "class='col col-form-label'")?>
                     <?=form_input(["class" => "form-control col", "id" => "product_name", "name" => "product_name", "placeholder" => "Type Name here"])?>
+                    <?=form_error("product_name")?>
                 </div>
                 <div class="col-lg-2 p-1">
                     <?=form_label("Grade", "product_grade", "class='col col-form-label'")?>
                     <?=form_input(["class" => "form-control col", "id" => "product_grade", "name" => "product_grade", "placeholder" => "Type Grade here"])?>
+                    <?=form_error("product_grade")?>
                 </div>
                 <div class="col-lg-2 p-1">
                     <?=form_label("Quality", "product_quality", "class='col col-form-label'")?>
                     <?=form_input(["class" => "form-control col", "id" => "product_quality", "name" => "product_quality", "placeholder" => "Type Quality here"])?>
+                    <?=form_error("product_quality")?>
                 </div>
                 <div class="col-lg-1 p-1">
                     <?=form_label("Rate", "product_sale_rate", "class='col col-form-label'")?>
                     <?=form_input(["class" => "form-control col", "id" => "product_sale_rate", "name" => "product_sale_rate", "placeholder" => "Type Rate here"])?>
+                    <?=form_error("product_sale_rate")?>
                 </div>
                 <div class="col-lg-1 p-1">
                     <?=form_label("GST", "product_gst_rate", "class='col col-form-label'")?>
                     <?=form_input(["class" => "form-control col", "id" => "product_gst_rate", "name" => "product_gst_rate", "placeholder" => "Type GST here"])?>
+                    <?=form_error("product_gst_rate")?>
                 </div>
                 <div class="col-lg-2 p-1">
                     <?=form_label("Remark", "product_remark", "class='col col-form-label'")?>
                     <?=form_input(["class" => "form-control col", "id" => "product_remark", "name" => "product_remark", "placeholder" => "Type Remark here"])?>
+                    <?=form_error("product_remark")?>
                 </div>
                 <div class="col-lg-1 p-1">
                     <?=form_label("Unit", "product_unit", "class='col col-form-label'")?>

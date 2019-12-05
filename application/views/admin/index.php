@@ -21,11 +21,13 @@ $input_classes = "form-control form-control-alternative";
             <div class="row">
               <div class="col-lg-12">
                 <?=form_label("Name", '', $label_attributes)?>
-                <?=form_input(["name" => "name", "placeholder" => "Type name here", "class" => $input_classes])?>
+                <?=form_input(["name" => "name", "placeholder" => "Type name here", "class" => $input_classes,"value"=>set_value("name")])?>
+                <?=form_error("name")?>
               </div>
               <div class="col-lg-12">
                 <?=form_label("Mobile No:", '', $label_attributes)?>
-                <?=form_input(["name" => "mobile", "placeholder" => "Type mobile here", "class" => $input_classes])?>
+                <?=form_input(["name" => "mobile", "placeholder" => "Type mobile here", "class" => $input_classes,"value"=>set_value("mobile")])?>
+                <?=form_error("mobile")?>
               </div>
               <div class="col-lg-12">
                 <?=form_label("User Type:", '', $label_attributes)?>
@@ -33,20 +35,24 @@ $input_classes = "form-control form-control-alternative";
               </div>
               <div class="col-lg-12">
                 <?=form_label("Email:", '', $label_attributes)?>
-                <?=form_input(["name" => "email", "placeholder" => "Type Email here", "class" => $input_classes])?>
+                <?=form_input(["name" => "email", "placeholder" => "Type Email here", "class" => $input_classes,"value"=>set_value("email")])?>
+                <?=form_error("email")?>
               </div>
               <div class="col-lg-12">
                 <?=form_label("Password:", '', $label_attributes)?>
-                <?=form_input(["name" => "password_1", "placeholder" => "Type Password here", "class" => $input_classes])?>
+                <?=form_input(["name" => "password_1", "placeholder" => "Type Password here", "class" => $input_classes,"value"=>set_value("password_1")])?>
+                <?=form_error("password_1")?>
               </div>
               <div class="col-lg-12">
                 <?=form_label("Confirm Password:", '', $label_attributes)?>
-                <?=form_input(["name" => "password_2", "placeholder" => "Confirm Password here", "class" => $input_classes])?>
+                <?=form_input(["name" => "password_2", "placeholder" => "Confirm Password here", "class" => $input_classes,"value"=>set_value("password_1")])?>
+                <?=form_error("password_1")?>
               </div>
               <div class="col-lg-12 pt-2">
                 <div class="row">
                   <div class="col-lg-6">
                     <?=form_submit(["name" => "add", "class" => "btn btn-success", "value" => "Add"])?>
+                    
                   </div>
                   <div class="col-lg-6">
                     <?=form_reset(["name" => "clear", "class" => "btn btn-danger", "value" => "Clear"])?>

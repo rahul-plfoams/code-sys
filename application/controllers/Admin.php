@@ -21,13 +21,18 @@ class Admin extends CI_controller
     }
     public function create_user()
     {
+        if ($this->form_validation->run("newuser")){
         $name = $this->input->post("name");
         $mobile = $this->input->post("mobile");
         $user_type = $this->input->post("user_type");
         $email = $this->input->post("email");
         $password = $this->input->post("password_1");
         $this->Admin_model->new_user($name, $mobile, $user_type, $email, $password);
-        return redirect("admin");
+        // return redirect("admin");
+    }
+    else{
+        return $this->index();
+    }
     }
     public function users()
     {
@@ -55,6 +60,7 @@ class Admin extends CI_controller
     }
     public function add_product()
     {
+        if($this->form_validation->run("addproduct")){
         $product_name = $this->input->post("product_name");
         $product_grade = $this->input->post("product_grade");
         $product_quality = $this->input->post("product_quality");
@@ -71,7 +77,10 @@ class Admin extends CI_controller
             "remark" => $product_remark,
             "unit" => $product_unit,
         ]);
-        return $this->products();
+        return $this->products();}
+        else{
+            return $this->products();
+        }
     }
 
     public function delete_product($id)
