@@ -28,7 +28,7 @@ class Admin extends CI_controller
         $email = $this->input->post("email");
         $password = $this->input->post("password_1");
         $this->Admin_model->new_user($name, $mobile, $user_type, $email, $password);
-        // return redirect("admin");
+        return redirect("admin");
     }
     else{
         return $this->index();
@@ -106,7 +106,27 @@ class Admin extends CI_controller
     }
     public function billing()
     {
-
+        $billing_country=$this->input->post("billing_country");
+        $billing_state=$this->input->post("billing_state");
+        $billing_city=$this->input->post("billing_city");
+        $billing_address=$this->input->post("billing_address");
+        $billing_pincode=$this->input->post("billing_pincode");
+        $credit_limit=$this->input->post("credit_limit");
+        $credit_days=$this->input->post("credit_days");
+        $billing_distance=$this->input->post("billing_distance");
+        $id = $this->input->post("id");
+        $data = [
+"billing_country"=>$billing_country,
+"billing_state"=>$billing_state,
+"billing_city"=>$billing_city,
+"billing_address"=>$billing_address,
+"billing_pincode"=>$billing_pincode,
+"credit_limit"=>$credit_limit,
+"credit_days"=>$credit_days,
+"billing_distance"=>$billing_distance
+        ];
+        $this->update($data);
+        return redirect("admin/edit/$id");
     }
     public function shipping()
     {

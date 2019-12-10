@@ -20,9 +20,10 @@ class Admin_model extends CI_Model
         $this->db->delete("users", $data);
         $this->db->delete("vendor_details", $data);
     }
-    public function update_user($data)
+    public function update_user($data,$table)
     {
-        $query = $this->db->where("name", $data["name"])->update("users", $data);
+        $query = $this->db->where("id",$data["id"])->update($table, $data);
+        // echo $query;
     }
 
     //products
