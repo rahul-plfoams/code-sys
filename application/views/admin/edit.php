@@ -40,6 +40,7 @@
             <div class="tab-content">
                 <div id="overview" class="container tab-pane active">
                     <?=form_open("admin/overview", ["id" => "form_overview"])?>
+                    <?=form_hidden(["id" => "$user->id"]);?>
                     <div class="form-group row">
                         <?=form_label("Company Name", "company_name", "class='col-sm-2 col-form-label'")?>
                         <?=form_input(["class" => "form-control col-sm-10", "id" => "company_name", "name" => "company_name", "placeholder" => "Type Company Name here", "value" => $user->company_name])?>
@@ -47,7 +48,7 @@
                     <div class="form-group row">
                         <?=form_label("Name", "name", "class='col-sm-2 col-form-label'")?>
                         <?=form_input(["class" => "form-control col-sm-10", "id" => "name", "name" => "name", "placeholder" => "Type Name here", "value" => $user->name]);?>
-                        <?=form_hidden(["id" => "$user->id"]);?>
+                        
                     </div>
                     <div class="form-group row">
                         <?=form_label("Mobile", "mobile", "class='col-sm-2 col-form-label'")?>
@@ -65,6 +66,8 @@
                 </div>
                 <div id="billing" class="container tab-pane fade">
                     <?=form_open("admin/billing", ["id" => "form_billing"])?>
+                    <?=form_hidden(["id" => "$user->id"]);?>
+                    <?=form_hidden(["id" => "$user->id"]);?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "billing_country", 'class="col-form-label"')?>
@@ -111,6 +114,7 @@
                 </div>
                 <div id="shipping" class="container tab-pane fade">
                     <?=form_open("admin/shipping", ["id" => "form_shipping"])?>
+                    <?=form_hidden(["id" => "$user->id"]);?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "country", 'class="col-form-label"')?>
@@ -149,6 +153,7 @@
                 </div>
                 <div id="contact" class="container tab-pane fade">
                     <?=form_open("admin/contact", ["id" => "form_contact"])?>
+                    <?=form_hidden(["id" => "$user->id"]);?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Mobile", "mobile", "class='col-form-label'")?>
@@ -183,6 +188,7 @@
                 </div>
                 <div id="gst" class="container tab-pane fade">
                     <?=form_open("admin/gst", ["id" => "form_gst"])?>
+                    <?=form_hidden(["id" => "$user->id"]);?>
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("GST place", "gst_place", "class='col-form-label'")?>
@@ -204,27 +210,27 @@
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("Permanent A/c no.", "account_no", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "account_no", "name" => "account_no", "placeholder" => "Type account_no here..", "value" => $user->gst_no])?>
+                            <?=form_input(["class" => "form-control", "id" => "account_no", "name" => "account_no", "placeholder" => "Type account_no here..", "value" => $user->account_no])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <?=form_label("Bank Name", "bank_name", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "bank_name", "name" => "bank_name", "placeholder" => "Type bank_name here..", "value" => $user->gst_no])?>
+                            <?=form_input(["class" => "form-control", "id" => "bank_name", "name" => "bank_name", "placeholder" => "Type bank_name here..", "value" => $user->bank_name])?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("A/C Type", "account_type", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "account_type", "name" => "account_type", "placeholder" => "Type account_type here..", "value" => $user->gst_no])?>
+                            <?=form_input(["class" => "form-control", "id" => "account_type", "name" => "account_type", "placeholder" => "Type account_type here..", "value" => $user->account_type])?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <?=form_label("Branch", "branch", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "branch", "name" => "branch", "placeholder" => "Type branch here..", "value" => $user->gst_no])?>
+                            <?=form_input(["class" => "form-control", "id" => "branch", "name" => "branch", "placeholder" => "Type branch here..", "value" => $user->branch])?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("IFSC", "ifsc", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "ifsc", "name" => "ifsc", "placeholder" => "Type ifsc here..", "value" => $user->gst_no])?>
+                            <?=form_input(["class" => "form-control", "id" => "ifsc", "name" => "ifsc", "placeholder" => "Type ifsc here..", "value" => $user->ifsc])?>
                         </div>
                     </div>
                     <div class="btn-grp">
@@ -236,6 +242,7 @@
                 <div id="ledger" class="container tab-pane fade">
                     <div id="importFrm">
                         <?=form_open("importData.php?id=")?>
+                        <?=form_hidden(["id" => "$user->id"]);?>
                         <?=$this->table->add_row(form_upload(["class" => "chooseFileInput", "name" => "file"]), form_submit(["class" => "btn btn-primary", "name" => "importSubmit", "value" => "IMPORT"]))->generate();?>
                         <?=form_close()?>
                         <?=$this->table->set_heading(["date", "particulars", "remark", "voucher_type", "voucher_no", "debit", "credit"])->generate();?>
