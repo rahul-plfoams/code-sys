@@ -87,3 +87,7 @@ i {
     width: 500px;
     text-align: center;
 }
+
+.scale2{
+    transform: scale(2);
+}

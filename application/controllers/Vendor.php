@@ -14,6 +14,7 @@ class Vendor extends CI_Controller
         $data["user"] = $this->Vendor_model->get_details()->row();
         $data["products"] = $this->Vendor_model->products($data["user"]->id);
         $data["orders"] = $this->Vendor_model->order_details($data["user"]->id);
+        // $data["orders"] = $this->Vendor_model->order_details(9);
         $this->load->view('vendor/index', $data);
         $this->load->view('templates/footer');
     }
@@ -33,11 +34,16 @@ class Vendor extends CI_Controller
                     "pcs"=>$order["pcs"][$i],
                     "remark"=>$order["remark"][$i]
             ];
+            
         }
-        echo "<pre>";
-        print_r(serialize($data));
-        print_r(unserialize(serialize($data)));
 
+        $this->Vendor_model->place_order(["vendor_id"=>$this->session->userdata["id"],"order_details"=>serialize($data)]);
+        // echo "<pre>";
+        // print_r(serialize($data));
+        // print_r(unserialize(serialize($data)));
+        // print_r($this->session->userdata['id']);
+        // echo time();
+// return $this->index();
         
     }
 }

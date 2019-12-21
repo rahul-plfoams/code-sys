@@ -221,6 +221,9 @@ if (!empty($orders->result())) {
 } else {
     echo "No records Found";
 }
+echo "<pre>";
+print_r($user);
+
 ?>
                 </div>
                 <div id="placeorder" class="container tab-pane active row">

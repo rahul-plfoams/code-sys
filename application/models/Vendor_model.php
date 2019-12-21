@@ -16,5 +16,8 @@ class Vendor_model extends CI_Model
     {
         return $this->db->where("vendor_id", $vendor_id)->get("orders");
     }
+    public function place_order($data){
+        return $this->db->insert("orders",$data);
+    }
     
 }

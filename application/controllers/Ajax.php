@@ -65,16 +65,17 @@ class ajax extends CI_controller
                     <td>" . form_input(["class" => "form-control", "placeholder" => "Thickness","name"=> "thickness[]"]) . "</td>
                     <td>" . form_input(["class" => "form-control", "placeholder" => "Pcs","name"=> "pcs[]"]) . "</td>
                     <td>" . form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark","name"=> "remark[]"]) . "</td>
-                    <td><i  class='fas fa-times text-danger'></i></td>
+                    <td><i class='fas fa-paperclip'>".form_upload()."</i><i  class='fas fa-times text-danger'></i></td>
                 </tr>";
         } else {
 
-            $table_header = ["Name", "Grade", "Quality", "Length", "Width", "Thickness", "Pcs", "Remark", "Actions"];
+            $table_header = ["SKU/Code","Name", "Grade", "Quality", "Length", "Width", "Thickness", "Pcs", "Remark", "Actions"];
             $template = [
                 'table_open' => '<table class="table table-bordered text-center">',
             ];
             $this->table->set_heading($table_header)->set_template($template);
             $this->table->add_row(
+                form_input(["class" => "form-control", "placeholder" => "sku/code","name"=> "sku[]"]),
                 $result->product_name.form_hidden(["p_in[]"=>$result->p_in]),
                 $result->grade,
                 $result->quality,
@@ -83,7 +84,7 @@ class ajax extends CI_controller
                 form_input(["class" => "form-control", "placeholder" => "Thickness","name"=> "thickness[]"]),
                 form_input(["class" => "form-control", "placeholder" => "Pcs","name"=> "pcs[]"]),
                 form_textarea(["class" => "form-control", "rows" => "1", "placeholder" => "Remark","name"=> "remark[]"]),
-                '<i  class="fas fa-times text-danger"></i>'
+                '<i class="fas fa-paperclip">'.form_upload().'</i><i  class="fas fa-times text-danger"></i>'
             );
             echo form_open("vendor/orderSubmit");
             echo $this->table->generate();

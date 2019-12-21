@@ -16,6 +16,20 @@
 	<script type="text/javascript" src="<?=base_url("assets/DataTables/datatables.min.js")?>"></script>
 	<script type="text/javascript" src="<?=base_url("assets/DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js")?>"></script>
 	<script type="text/javascript" src="<?=base_url("assets/js/bootstrap.min.js")?>"></script>
+	<style>
+	.fa-paperclip{
+		position:relative;
+		overflow:hidden;
+		display:inline-block;
+	}
+	.fa-paperclip input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+	</style>
 </head>
 
 <body class="bg-default">
