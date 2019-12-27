@@ -4,8 +4,8 @@
             Products
         </div>
         <div class="card-body text-center">
-            <?=form_open("admin/add_product", ["id" => "form_products"])?>
-
+            <?=form_open("products/add_product", ["id" => "form_products"])?>
+<?=form_hidden("product_id")?>
             <div class="form-group row">
                 <div class="col-lg-1 p-1">
                     <?=form_label("Name", "product_name", "class='col col-form-label'")?>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-lg-1 p-1">
                     <?=form_label("Unit", "product_unit", "class='col col-form-label'")?>
-                    <?=form_dropdown("units", ["mm", "kg", "Sq.Ft", "Pcs", "Meter"], "mm", "class='form-control' id='product_unit'")?>
+                    <?=form_dropdown("units", ["mm"=>"mm", "kg"=>"kg", "Sq.Ft"=>"Sq.Ft", "Pcs"=>"Pcs", "Meter"=>"Meter"], "mm", "class='form-control' id='product_unit'")?>
                 </div>
                 <div class="col-lg-2 p-0">
                     <?=form_label("Actions", "actions", "class='col-form-label'")?>
@@ -64,15 +64,35 @@ foreach ($products->result() as $product) {
         $product->sale_rate,
         $product->gst_rate,
         $product->remark,
-        "<i class='text-info fas fa-edit'></i>" . nbs(2) . anchor("admin/delete_product/$product->product_id", "<i class='text-danger fas fa-trash-alt'></i>")
-    );}?>
+        "<i class='text-info fas fa-edit' onclick='editProduct($product->product_id)'></i>" . nbs(2) . "<i class='text-danger fas fa-trash-alt' onclick='deleteProduct($product->product_id)'></i>");}?>
             <?=$this->table->generate()?>
         </div>
     </div>
 
 </div>
 <script>
-    $(document).ready(() => {
+    function editProduct(id) {
+       $.post("<?=base_url('products/getProduct')?>",{product_id:id},function(data){
+            product_info=JSON.parse(data);
+            $("#product_name").val(product_info.product_name);
+            $("#product_grade").val(product_info.grade);
+            $("#product_quality").val(product_info.quality);
+            $("#product_sale_rate").val(product_info.sale_rate);
+            $("#product_gst_rate").val(product_info.gst_rate);
+            $("#product_remark").val(product_info.remark);
+            $("#product_unit").val(product_info.unit);
+            $("[name='product_id']").val(product_info.product_id);
+            $(".btn-grp [type='submit']").text("update").addClass("btn-info").removeClass("btn-dark");
+            $("#form_products").attr("action","<?=base_url('products/updateProduct')?>");
+        });
+    }
+    function deleteProduct(id){
+        $.post("<?=base_url('products/deleteProduct')?>",{product_id:id},function(){
+            
+        });
+        $(`td:contains(${id})`).parents("tr").remove();
+    }
+    $(() => {
 
         $('#myTbl').DataTable({
             dom: 'lfrtipB'

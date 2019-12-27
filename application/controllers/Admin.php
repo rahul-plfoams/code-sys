@@ -6,6 +6,7 @@ class Admin extends CI_controller
     {
         parent::__construct();
         $this->load->model("Admin_model");
+        $this->load->model("product_model");
     }
     public function index()
     {
@@ -56,42 +57,15 @@ class Admin extends CI_controller
     {
         $this->Admin_model->update_user_details($data);
     }
-    public function products()
-    {
+   
+    
+    
 
-        $data["products"] = $this->Admin_model->list_products();
-        $this->default_view('admin/products', $data);
-    }
-    public function add_product()
-    {
-        if($this->form_validation->run("addproduct")){
-        $product_name = $this->input->post("product_name");
-        $product_grade = $this->input->post("product_grade");
-        $product_quality = $this->input->post("product_quality");
-        $product_sale_rate = $this->input->post("product_sale_rate");
-        $product_gst_rate = $this->input->post("product_gst_rate");
-        $product_remark = $this->input->post("product_remark");
-        $product_unit = $this->input->post("units");
-        $this->Admin_model->insert_product([
-            "product_name" => $product_name,
-            "grade" => $product_grade,
-            "quality" => $product_quality,
-            "sale_rate" => $product_sale_rate,
-            "gst_rate" => $product_gst_rate,
-            "remark" => $product_remark,
-            "unit" => $product_unit,
-        ]);
-        return $this->products();}
-        else{
-            return $this->products();
-        }
-    }
-
-    public function delete_product($id)
-    {
-        $this->Admin_model->remove_product($id);
-        return $this->products();
-    }
+    // public function delete_product($id)
+    // {
+    //     $this->Admin_model->remove_product($id);
+    //     return $this->products();
+    // }
 
     public function orders()
     {

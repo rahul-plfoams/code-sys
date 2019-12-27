@@ -2,42 +2,26 @@
 class Product_model extends CI_Model
 {
 
-    public function product_list()
+    //products
+    public function list_products()
     {
-        $hasil = $this->db->get('product');
-        return $hasil->result();
+        return $this->db->get("products");
     }
-
-    public function save_product()
+    public function insert_product($data)
     {
-        $data = array(
-            'product_code' => $this->input->post('product_code'),
-            'product_name' => $this->input->post('product_name'),
-            'product_price' => $this->input->post('price'),
-        );
-        $result = $this->db->insert('product', $data);
-        return $result;
+        $this->db->insert("products", $data);
     }
-
-    public function update_product()
+    public function remove_product($id)
     {
-        $product_code = $this->input->post('product_code');
-        $product_name = $this->input->post('product_name');
-        $product_price = $this->input->post('price');
-
-        $this->db->set('product_name', $product_name);
-        $this->db->set('product_price', $product_price);
-        $this->db->where('product_code', $product_code);
-        $result = $this->db->update('product');
-        return $result;
+        $this->db->where("product_id", $id)->delete("products");
+        return $this->list_products();
     }
-
-    public function delete_product()
-    {
-        $product_code = $this->input->post('product_code');
-        $this->db->where('product_code', $product_code);
-        $result = $this->db->delete('product');
-        return $result;
+   function update_product($id,$data){
+       $this->db->where("product_id",$id)->update("products",$data);
+   }
+    
+    public function get_single_product($id){
+return $this->db->where("product_id",$id)->get("products")->row_array();
     }
 
 }

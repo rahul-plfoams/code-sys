@@ -27,17 +27,5 @@ class Admin_model extends CI_Model
 public function update_user_details($data){
     $query = $this->db->where("id",$data["id"])->update("vendor_details",$data);
 }
-    //products
-    public function insert_product($data)
-    {
-        $this->db->insert("products", $data);
-    }
-    public function remove_product($id)
-    {
-        $this->db->where("product_id", $id)->delete("products");
-    }
-    public function list_products()
-    {
-        return $this->db->get("products");
-    }
+    
 }
