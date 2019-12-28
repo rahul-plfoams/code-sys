@@ -12,7 +12,7 @@ class Admin_model extends CI_Model
     {
         $loginData = ["name" => $name, "mobile" => $mobile, "user_type" => $user_type, "email" => $email, "password" => $password];
         $this->db->insert("users", $loginData);
-        $this->db->insert("vendor_details", ["status" => 1]);
+        $this->db->insert("vendor_details",["owner"=>$name]);
     }
     public function delete_user($id)
     {

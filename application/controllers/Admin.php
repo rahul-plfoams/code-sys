@@ -75,7 +75,7 @@ class Admin extends CI_controller
     {
         $company_name = $this->input->post("company_name");
         $name = $this->input->post("name");
-        $mobile = $this->input->post("mobile");
+        $mobile = $this->input->post("overview_mobile");
         $user_type = $this->input->post("role");
         $id = $this->input->post("id");
         $data = ["id" => $id, "company_name" => $company_name, "name" => $name, "mobile" => $mobile, "user_type" => $user_type];
@@ -134,11 +134,11 @@ class Admin extends CI_controller
     }
     public function contact()
     {
-        $mobile=$this->input->post("mobile");
+        $mobile=$this->input->post("contact_mobile");
         $email=$this->input->post("email");
         $website=$this->input->post("website");
         $reference=$this->input->post("reference");
-        $owner=$this->input->post("owner");
+        $owner=$this->input->post("contact_owner");
         $id = $this->input->post("id");
         $data = [
                 "website"=>$website,
@@ -162,7 +162,7 @@ class Admin extends CI_controller
         $gst_place=$this->input->post("gst_place");
         $state_code=$this->input->post("state_code");
         $gst_no=$this->input->post("gst_no");
-        $owner=$this->input->post("owner");
+        $owner=$this->input->post("gst_owner");
         $account_no=$this->input->post("account_no");
         $bank_name=$this->input->post("bank_name");
         $account_type=$this->input->post("account_type");

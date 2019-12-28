@@ -93,10 +93,10 @@ $input_classes = "form-control form-control-alternative";
     $status = $user->status == 1 ? 'enabled' : 'disabled';
     echo "<tr>
           <td>$user->name</td>
-          <td>$user->mobile</td>
+          <td>".form_hidden("vendor_id",$user->id)."$user->mobile</td>
           <td>$user->user_type</td>
           <td> <a  href='admin/edit/$user->id'><i class='text-info fas fa-edit'></i></a>" . nbs(2) . "<a href='admin/delete/$user->id'><i class='text-danger fas fa-trash-alt'></i></a> </td>
-          <td id='accStatus'>$status</td>
+          <td class='accStatus'>$status</td>
           </tr>";
 }
 ?>
@@ -116,14 +116,20 @@ $input_classes = "form-control form-control-alternative";
       dom: 'Bfrtip',
       buttons: ['pdf', 'print']
     });
-    $("#accStatus").click(() => {
-      status = $("#accStatus").text() === "enabled" ? 1 : 0;
-      console.log(status);
+    $(".accStatus").click(function(event){
+
+// console.log(this,event.target);
+
+
+      status = event.target.innerText === "enabled" ? 1 : 0;
+      id=event.target.parentElement.querySelector("input[type='hidden']").value;
+
       $.post("<?=base_url('ajax/statusChange')?>", {
-          status: status
+          status: status,
+          id:id
         },
         (res) => {
-          $("#accStatus").text(res);
+        event.target.innerText=res;
         }
       )
     });

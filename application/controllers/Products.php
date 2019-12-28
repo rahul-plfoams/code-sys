@@ -63,6 +63,7 @@ class Products extends CI_controller{
             "unit"=>$this->input->post("units")
         ];
          $this->Product_model->update_product($product_id,$data);
+         return redirect("products");
     }
     function deleteProduct(){
         $id=$this->input->post("product_id");

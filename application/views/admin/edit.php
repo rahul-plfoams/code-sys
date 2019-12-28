@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group row">
                         <?=form_label("Mobile", "mobile", "class='col-sm-2 col-form-label'")?>
-                        <?=form_input(["class" => "form-control col-sm-10", "id" => "mobile", "name" => "mobile", "placeholder" => "Type Mobile No here", "value" => $user->mobile])?>
+                        <?=form_input(["class" => "form-control col-sm-10", "id" => "overview_mobile", "name" => "overview_mobile", "placeholder" => "Type Mobile No here", "value" => $user->mobile])?>
                     </div>
                     <div class="form-group row">
                         <?=form_label("Role", "role", "class='col-sm-2 col-form-label'")?>
@@ -157,7 +157,7 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <?=form_label("Mobile", "mobile", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "mobile", "name" => "mobile", "placeholder" => "Type mobile here..", "value" => $user->mobile])?>
+                            <?=form_input(["class" => "form-control", "id" => "contact_mobile", "name" => "contact_mobile", "placeholder" => "Type mobile here..", "value" => $user->mobile])?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Email", "email", "class='col-form-label'")?>
@@ -177,7 +177,7 @@
                     <div class="form-group row">
                         <div class="col-sm-12">
                             <?=form_label("Owner", "owner", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type owner here..", "value" => $user->owner])?>
+                            <?=form_input(["class" => "form-control", "id" => "contact_owner", "name" => "contact_owner", "placeholder" => "Type owner here..", "value" => $user->owner])?>
                         </div>
                     </div>
                     <div class="btn-grp">
@@ -206,7 +206,7 @@
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <?=form_label("A/C Holder Name", "owner", "class='col-form-label'")?>
-                            <?=form_input(["class" => "form-control", "id" => "owner", "name" => "owner", "placeholder" => "Type owner here..", "value" => $user->owner])?>
+                            <?=form_input(["class" => "form-control", "id" => "gst_owner", "name" => "gst_owner", "placeholder" => "Type owner here..", "value" => $user->owner])?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("Permanent A/c no.", "account_no", "class='col-form-label'")?>
@@ -284,7 +284,7 @@ foreach ($data as $row) {
         $row->gst_rate,
         $row->product_remark,
         form_hidden(["value" => $row->p_in]) .
-        '<i  class="fas fa-times text-danger"></i>'
+        '<i class="text-info fas fa-edit"></i><i  class="fas fa-times text-danger"></i>'
     );
 }
 echo $this->table->generate();
@@ -358,6 +358,9 @@ $(document).ready(function () {
         }
     });
     $("#savePref").click((event) => {
+        if ($(event.target).hasClass("fa-edit")){
+console.log("edit button clicked");
+        }
         if ($(event.target).hasClass("fa-times")) {
             const [p_in] = $(event.target).parents("tr").children("td").children("input");
             $.post("<?=base_url('ajax/delPref')?>", {p_in:$(p_in).val(),vendor:vendor},

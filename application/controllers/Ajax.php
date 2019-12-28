@@ -152,7 +152,7 @@ class ajax extends CI_controller
                 $row->gst_rate,
                 $row->product_remark,
                 form_hidden(["value" => $row->p_in]) .
-                '<i  class="fas fa-times text-danger"></i>'
+                '<i class="text-info fas fa-edit"></i><i  class="fas fa-times text-danger"></i>'
             );
         }
         echo $this->table->generate();
@@ -168,9 +168,16 @@ class ajax extends CI_controller
     }
     public function statusChange()
     {
-        if ($this->input->post("status") == 1) {
+        $status=$this->input->post("status");
+        $id=$this->input->post("id");
+        // $this->db->where("id",$id)->get("users")->row();
+        if ( $status== 1) {
+            $data=["status"=>0];
+            $this->db->where("id",$id)->update("users",$data);
             echo "disabled";
         } else {
+            $data=["status"=>1];
+            $this->db->where("id",$id)->update("users",$data);
             echo "enabled";
         }
     }
