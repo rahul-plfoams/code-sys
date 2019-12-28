@@ -44,7 +44,7 @@ class Products extends CI_controller{
         ]);
         return redirect("products");}
         else{
-            return redirect("products");
+            return $this->products();
         }
     }
     function getProduct(){
