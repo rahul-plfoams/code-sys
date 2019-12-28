@@ -358,9 +358,7 @@ $(document).ready(function () {
         }
     });
     $("#savePref").click((event) => {
-        if ($(event.target).hasClass("fa-edit")){
-console.log("edit button clicked");
-        }
+       
         if ($(event.target).hasClass("fa-times")) {
             const [p_in] = $(event.target).parents("tr").children("td").children("input");
             $.post("<?=base_url('ajax/delPref')?>", {p_in:$(p_in).val(),vendor:vendor},
@@ -369,6 +367,31 @@ console.log("edit button clicked");
                     $('#savePref pre table').DataTable();
                 }
             )
+        }
+        else{
+            if ($(event.target).hasClass("fa-edit")){
+            rate=$(event.target).parents("tr").children("td:nth-child(4)");
+            remark=$(event.target).parents("tr").children("td:nth-child(6)");
+            rate.html("<input class='form-control' type='text' value='"+parseInt(rate.text())+"'>");
+            remark.html("<input class='form-control' type='text' value='"+remark.text()+"'>");
+            $(event.target).addClass("fa-check").removeClass("fa-edit");
+        }
+        else{
+            if ($(event.target).hasClass("fa-check")){
+            const [rate, remark,p_in]=$(event.target).parents("tr").children("td").children("input");
+            $.post("<?=base_url('ajax/updatePref')?>", {
+                vendor:vendor,
+                p_in:$(p_in).val(),
+                rate:$(rate).val(),
+                remark:$(remark).val()
+                },
+                (res) => {
+                    $("#savePref").html(res);
+                    $('#savePref pre table').DataTable();
+                }
+            )
+            $(event.target).addClass("fa-edit").removeClass("fa-check");}
+        }
         }
     });
 

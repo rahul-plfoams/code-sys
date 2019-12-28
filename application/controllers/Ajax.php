@@ -158,6 +158,21 @@ class ajax extends CI_controller
         echo $this->table->generate();
 
     }
+    public function updatePref(){
+        $p_in = $this->input->post("p_in");
+        $rate = $this->input->post("rate");
+        $remark = $this->input->post("remark");
+        $vendor = $this->input->post("vendor");
+        $data=[
+            "product_rate"=>$rate,
+            "product_remark"=>$remark
+        ];
+        if($this->db->where("p_in",$p_in)->update("vendor_pref",$data))
+        {
+           $this->vendorPref($vendor);
+        }
+
+    }
     public function delPref()
     {
         $p_in = $this->input->post("p_in");
