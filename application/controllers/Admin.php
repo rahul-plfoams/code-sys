@@ -61,15 +61,11 @@ class Admin extends CI_controller
     
     
 
-    // public function delete_product($id)
-    // {
-    //     $this->Admin_model->remove_product($id);
-    //     return $this->products();
-    // }
 
     public function orders()
     {
-        return redirect("orders");
+        $data["orders"] = $this->db->get("orders");
+        $this->default_view("admin/orders", $data);
     }
     public function overview()
     {

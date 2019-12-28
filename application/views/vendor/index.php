@@ -221,8 +221,6 @@ if (!empty($orders->result())) {
 } else {
     echo "No records Found";
 }
-echo "<pre>";
-print_r($user);
 
 ?>
                 </div>

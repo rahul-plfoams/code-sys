@@ -38,12 +38,7 @@ class Vendor extends CI_Controller
         }
 
         $this->Vendor_model->place_order(["vendor_id"=>$this->session->userdata["id"],"order_details"=>serialize($data)]);
-        // echo "<pre>";
-        // print_r(serialize($data));
-        // print_r(unserialize(serialize($data)));
-        // print_r($this->session->userdata['id']);
-        // echo time();
-// return $this->index();
+return $this->index();
         
     }
 }
