@@ -118,7 +118,6 @@ $input_classes = "form-control form-control-alternative";
     });
     $(".accStatus").click(function(event){
 
-// console.log(this,event.target);
 
 
       status = event.target.innerText === "enabled" ? 1 : 0;

@@ -5,24 +5,28 @@
         <div class="card-header bg-transparent">
           <div class="row align-items-center">
             <div class="col">
-              <h2 class="text-uppercase ls-1 mb-1">All Orders</h2>
+              <h2 class="text-uppercase ls-1 mb-1">Order No.<?=$order->row()->order_id?></h2>
             </div>
           </div>
         </div>
         <div class="card-body pt-0">
         <?php
-if (!empty($orders->result())) {
-    $table_header = ["Order No", "Date", "Status","Actions"];
+if (!empty($order->result())) {
+    $table_header = ["product_pref", "rate","remark","length", "Width","Thickness","Quantity","Remark"];
     $template = ['table_open' => '<table class="table table-bordered text-center" id="orderTable">'];
     $this->table->set_heading($table_header)->set_template($template);
-    foreach ($orders->result() as $order) {
+    $order_data=unserialize($order->row()->order_details); 
+    foreach ($order_data as $item) {
+        $product=$this->db->join("vendor_pref","product_id")->get("products")->row();
         $this->table->add_row(
-            $order->order_id, 
-            $order->order_generated, 
-            $order->order_status,
-            "<a class='btn btn-info' href='".base_url("admin/order_view/$order->order_id")."'>View</a>
-            <a class='btn btn-success'>Update</a>
-            <a class='btn btn-danger' disabled>Delete</a>"
+            $product->product_name,
+            $product->product_rate,
+            $product->product_remark,
+            $item["length"],
+            $item["width"],
+            $item["thickness"],
+            $item["pcs"],
+            $item["remark"]
         );
     }
     echo $this->table->generate();

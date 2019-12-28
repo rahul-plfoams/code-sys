@@ -58,14 +58,16 @@ class Admin extends CI_controller
         $this->Admin_model->update_user_details($data);
     }
    
-    
-    
-
-
     public function orders()
     {
         $data["orders"] = $this->db->get("orders");
         $this->default_view("admin/orders", $data);
+    }
+
+    public function order_view($order_id)
+    {
+        $data["order"] = $this->db->where("order_id",$order_id)->get("orders");
+        $this->default_view("admin/order_view", $data);
     }
     public function overview()
     {
