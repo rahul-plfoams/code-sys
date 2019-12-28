@@ -13,7 +13,7 @@
         <?php
 if (!empty($orders->result())) {
     $table_header = ["Order No", "Date", "Status"];
-    $template = ['table_open' => '<table class="table table-bordered text-center">'];
+    $template = ['table_open' => '<table class="table table-bordered text-center" id="orderTable">'];
     $this->table->set_heading($table_header)->set_template($template);
     foreach ($orders->result() as $order) {
         $this->table->add_row($order->order_id, $order->order_generated, $order->order_status);
@@ -30,3 +30,8 @@ if (!empty($orders->result())) {
    
   </div>
 </div>
+<script>
+$(()=>{
+    $("#orderTable")DataTable();
+})
+</script>
