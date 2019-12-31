@@ -6,13 +6,14 @@
           <div class="row align-items-center">
             <div class="col">
               <h2 class="text-uppercase ls-1 mb-1">Order No.<?=$order->row()->order_id?></h2>
+              <h3 class="text-center text-uppercase text-danger"><?=$order->row()->company_name?></h3>
             </div>
           </div>
         </div>
         <div class="card-body pt-0">
         <?php
 if (!empty($order->result())) {
-    $table_header = ["product_pref", "rate","remark","length", "Width","Thickness","Quantity","Remark"];
+    $table_header = ["product", "rate","remark","length", "Width","Thickness","Quantity","Remark"];
     $template = ['table_open' => '<table class="table table-bordered text-center" id="orderTable">'];
     $this->table->set_heading($table_header)->set_template($template);
     $order_data=unserialize($order->row()->order_details); 

@@ -12,17 +12,19 @@
         <div class="card-body pt-0">
         <?php
 if (!empty($orders->result())) {
-    $table_header = ["Order No", "Date", "Status","Actions"];
+    $table_header = ["Order No", "Company","Date", "Status","Actions"];
     $template = ['table_open' => '<table class="table table-bordered text-center" id="orderTable">'];
     $this->table->set_heading($table_header)->set_template($template);
     foreach ($orders->result() as $order) {
+      $date=date_create($order->order_generated);
         $this->table->add_row(
             $order->order_id, 
-            $order->order_generated, 
+            $order->company_name,
+            date_format($date,"dS M Y"),
             $order->order_status,
             "<a class='btn btn-info' href='".base_url("admin/order_view/$order->order_id")."'>View</a>
-            <a class='btn btn-success'>Update</a>
-            <a class='btn btn-danger' disabled>Delete</a>"
+            <a class='btn btn-success' disabled>Update</a>
+            <a class='btn btn-danger' disabled>Delete</a>"  
         );
     }
     echo $this->table->generate();

@@ -53,39 +53,39 @@
                     <div class=" row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "billing_country", 'class="col-form-label"')?>
-                            <?=form_label($user->billing_country, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->billing_country, "billing_country", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("State", "billing_state", 'class="col-form-label"')?>
-                            <?=form_label($user->billing_state, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->billing_state, "billing_state", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("City", "billing_city", 'class="col-form-label"')?>
-                            <?=form_label($user->billing_city, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->billing_city, "billing_city", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-8">
                             <?=form_label("Address", "billing_address", 'class="col-form-label"')?>
-                            <?=form_label($user->billing_address, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->billing_address, "billing_address", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Pincode", "billing_pincode", 'class="col-form-label"')?>
-                            <?=form_label($user->billing_pincode, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->billing_pincode, "billing_pincode", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-4">
                             <?=form_label("Credit Limit", "credit_limit", 'class="col-form-label"')?>
-                            <?=form_label($user->credit_limit, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->credit_limit, "credit_limit", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Credit days", "credit_days", 'class="col-form-label"')?>
-                            <?=form_label($user->credit_days, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->credit_days, "credit_days", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Distance", "billing_distance", 'class="col-form-label"')?>
-                            <?=form_label($user->billing_distance, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->billing_distance, "billing_distance", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                 </div>
@@ -93,31 +93,31 @@
                     <div class=" row">
                         <div class="col-sm-4">
                             <?=form_label("Country", "country", 'class="col-form-label"')?>
-                            <?=form_label($user->shipping_country, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->shipping_country, "country", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("State", "state", 'class="col-form-label"')?>
-                            <?=form_label($user->shipping_state, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->shipping_state, "state", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("City", "city", 'class="col-form-label"')?>
-                            <?=form_label($user->shipping_city, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->shipping_city, "city", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-8">
                             <?=form_label("Address", "address", 'class="col-form-label"')?>
-                            <?=form_label($user->shipping_address, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->shipping_address, "address", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Pincode", "pincode", 'class="col-form-label"')?>
-                            <?=form_label($user->shipping_pincode, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->shipping_pincode, "pincode", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-4">
                             <?=form_label("Distance", "kilometer", 'class="col-form-label"')?>
-                            <?=form_label($user->shipping_distance, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->shipping_distance, "kilometer", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                 </div>
@@ -125,31 +125,31 @@
                     <div class=" row">
                         <div class="col-sm-4">
                             <?=form_label("Mobile", "mobile", "class='col-form-label'")?>
-                            <?=form_label($user->mobile, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->mobile, "mobile", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Email", "email", "class='col-form-label'")?>
-                            <?=form_label($user->email, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->email, "email", "class=' col-form-label text-dark'")?>
                         </div>
                         <!-- <div class="col-sm-4">
                             <?=form_label("Phone", "phone", "class='col-form-label'")?>
-                            <?=form_label($user->phone, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->phone, "phone", "class=' col-form-label text-dark'")?>
                         </div> -->
                     </div>
                     <div class=" row">
                         <div class="col-sm-8">
                             <?=form_label("Website", "website", "class='col-form-label'")?>
-                            <?=form_label($user->website, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->website, "website", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("Reference", "reference", "class='col-form-label'")?>
-                            <?=form_label($user->reference, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->reference, "reference", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-12">
                             <?=form_label("Owner", "owner", "class='col-form-label'")?>
-                            <?=form_label($user->owner, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->owner, "owner", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                 </div>
@@ -157,45 +157,45 @@
                     <div class=" row">
                         <div class="col-sm-4">
                             <?=form_label("GST place", "gst_place", "class='col-form-label'")?>
-                            <?=form_label($user->gst_place, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->gst_place, "gst_place", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("state code", "state_code", "class='col-form-label'")?>
-                            <?=form_label($user->state_code, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->state_code, "state_code", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-4">
                             <?=form_label("GST No", "gst_no", "class='col-form-label'")?>
-                            <?=form_label($user->gst_no, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->gst_no, "gst_no", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-6">
                             <?=form_label("A/C Holder Name", "owner", "class='col-form-label'")?>
-                            <?=form_label($user->owner, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->owner, "owner", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("Permanent A/c no.", "account_no", "class='col-form-label'")?>
-                            <?=form_label($user->gst_no, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->gst_no, "account_no", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-6">
                             <?=form_label("Bank Name", "bank_name", "class='col-form-label'")?>
-                            <?=form_label($user->gst_no, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->bank_name, "bank_name", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("A/C Type", "account_type", "class='col-form-label'")?>
-                            <?=form_label($user->gst_no, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->account_type, "account_type", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                     <div class=" row">
                         <div class="col-sm-6">
                             <?=form_label("Branch", "branch", "class='col-form-label'")?>
-                            <?=form_label($user->gst_no, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->branch, "branch", "class=' col-form-label text-dark'")?>
                         </div>
                         <div class="col-sm-6">
                             <?=form_label("IFSC", "ifsc", "class='col-form-label'")?>
-                            <?=form_label($user->gst_no, "company_name", "class=' col-form-label text-dark'")?>
+                            <?=form_label($user->ifsc, "ifsc", "class=' col-form-label text-dark'")?>
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,8 @@ if (!empty($orders->result())) {
     $template = ['table_open' => '<table class="table table-bordered text-center">'];
     $this->table->set_heading($table_header)->set_template($template);
     foreach ($orders->result() as $order) {
-        $this->table->add_row($order->order_id, $order->order_generated, $order->order_status);
+        $date=date_create($order->order_generated);
+        $this->table->add_row($order->order_id, date_format($date,"dS M Y"), $order->order_status);
     }
     echo $this->table->generate();
 } else {

@@ -11,10 +11,9 @@ class Vendor extends CI_Controller
     {
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
-        $data["user"] = $this->Vendor_model->get_details()->row();
+        $data["user"] = $this->Vendor_model->get_details($this->session->id)->row();
         $data["products"] = $this->Vendor_model->products($data["user"]->id);
         $data["orders"] = $this->Vendor_model->order_details($data["user"]->id);
-        // $data["orders"] = $this->Vendor_model->order_details(9);
         $this->load->view('vendor/index', $data);
         $this->load->view('templates/footer');
     }

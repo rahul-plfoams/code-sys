@@ -1,9 +1,9 @@
 <?php
 class Vendor_model extends CI_Model
 {
-    public function get_details()
+    public function get_details($id)
     {
-        return $this->db->join("vendor_details", "id")->get("users");
+        return $this->db->join("vendor_details", "id")->where("id",$id)->get("users");
     }
     public function products($vendor)
     {

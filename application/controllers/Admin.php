@@ -60,13 +60,13 @@ class Admin extends CI_controller
    
     public function orders()
     {
-        $data["orders"] = $this->db->get("orders");
+        $data["orders"] = $this->db->join("users","users.id=orders.vendor_id")->get("orders");;
         $this->default_view("admin/orders", $data);
     }
 
     public function order_view($order_id)
     {
-        $data["order"] = $this->db->where("order_id",$order_id)->get("orders");
+        $data["order"] = $this->db->join("users","users.id=orders.vendor_id")->where("order_id",$order_id)->get("orders");
         $this->default_view("admin/order_view", $data);
     }
     public function overview()
