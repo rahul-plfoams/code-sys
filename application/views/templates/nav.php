@@ -8,7 +8,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" href="./index.html">
-      <?=img(["src" => "../assets/img/brand/blue.png", "class" => "navbar-brand-img", "alt" => "..."])?>
+      <?=img(["src" => "https://www.plfoams.in/img/pyare-lal-group-of-industries.png", "class" => "navbar-brand-img", "alt" => "..."])?>
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -39,7 +39,7 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="<?=base_url("admin")?>">
-              <?=img(["src" => "../assets/img/brand/blue.png"])?>
+              <?=img(["src" => "https://www.plfoams.in/img/pyare-lal-group-of-industries.png"])?>
             </a>
           </div>
           <div class="col-6 collapse-close">

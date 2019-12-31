@@ -117,12 +117,8 @@ $input_classes = "form-control form-control-alternative";
       buttons: ['pdf', 'print']
     });
     $(".accStatus").click(function(event){
-
-
-
       status = event.target.innerText === "enabled" ? 1 : 0;
       id=event.target.parentElement.querySelector("input[type='hidden']").value;
-
       $.post("<?=base_url('ajax/statusChange')?>", {
           status: status,
           id:id

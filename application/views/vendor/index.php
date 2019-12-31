@@ -275,6 +275,7 @@ if (!empty($orders->result())) {
                      $("#orderForm").html(res);
                 }
                         $("#orderForm table").DataTable();
+                        $("#orderForm table input[type='text'],#orderForm table textarea").parents("td").addClass("p-0 m-0");
             });
             clearSearch();
     }
