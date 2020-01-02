@@ -208,15 +208,16 @@ $template = ['table_open' => '<table class="table table-bordered text-center">']
 $this->table->set_heading($table_header)->set_template($template);foreach ($products->result() as $row) {$this->table->add_row($row->product_name, $row->grade, $row->quality, $row->product_remark);}?>
                     <?=$this->table->generate();?>
                 </div>
-                <div id="order" class="container tab-pane fade row">
+                <div id="order" class="container tab-pane active row">
 <?php
 if (!empty($orders->result())) {
-    $table_header = ["Order No", "Date", "Status"];
+    $table_header = ["Order No", "Date", "Status","Action"];
     $template = ['table_open' => '<table class="table table-bordered text-center">'];
     $this->table->set_heading($table_header)->set_template($template);
     foreach ($orders->result() as $order) {
         $date=date_create($order->order_generated);
-        $this->table->add_row($order->order_id, date_format($date,"dS M Y"), $order->order_status);
+         
+        $this->table->add_row($order->order_id, date_format($date,"dS M Y"), $order->order_status,"<a href='javascript:void(0)' class='btn btn-success'>Modify</a>");
     }
     echo $this->table->generate();
 } else {
@@ -225,7 +226,7 @@ if (!empty($orders->result())) {
 
 ?>
                 </div>
-                <div id="placeorder" class="container tab-pane active row">
+                <div id="placeorder" class="container tab-pane fade row">
                     <?=form_input(["id" => "searchBox", "class" => "mx-auto col-4 form-control", "placeholder" => "Search Here For placing Order"])?>
                     <div id="liveSearch">
                     </div>

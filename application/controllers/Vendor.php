@@ -37,7 +37,10 @@ class Vendor extends CI_Controller
         }
 
         $this->Vendor_model->place_order(["vendor_id"=>$this->session->userdata["id"],"order_details"=>serialize($data)]);
-return $this->index();
+return redirect("vendor");
+        
+    }
+    public function modifyOrder(){
         
     }
 }
