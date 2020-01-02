@@ -40,12 +40,12 @@ $input_classes = "form-control form-control-alternative";
               </div>
               <div class="col-lg-12">
                 <?=form_label("Password:", '', $label_attributes)?>
-                <?=form_input(["name" => "password_1", "placeholder" => "Type Password here", "class" => $input_classes,"value"=>set_value("password_1")])?>
+                <?=form_password(["name" => "password_1", "placeholder" => "Type Password here", "class" => $input_classes,"value"=>set_value("password_1")])?>
                 <?=form_error("password_1")?>
               </div>
               <div class="col-lg-12">
                 <?=form_label("Confirm Password:", '', $label_attributes)?>
-                <?=form_input(["name" => "password_2", "placeholder" => "Confirm Password here", "class" => $input_classes,"value"=>set_value("password_1")])?>
+                <?=form_password(["name" => "password_2", "placeholder" => "Confirm Password here", "class" => $input_classes,"value"=>set_value("password_1")])?>
                 <?=form_error("password_1")?>
               </div>
               <div class="col-lg-12 pt-2">
